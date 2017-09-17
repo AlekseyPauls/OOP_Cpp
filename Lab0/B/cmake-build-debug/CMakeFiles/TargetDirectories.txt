@@ -1,0 +1,3 @@
+F:/OOP_Cpp/Lab0/B/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+F:/OOP_Cpp/Lab0/B/cmake-build-debug/CMakeFiles/B.dir
+F:/OOP_Cpp/Lab0/B/cmake-build-debug/CMakeFiles/edit_cache.dir
