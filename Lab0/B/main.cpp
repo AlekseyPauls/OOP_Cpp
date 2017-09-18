@@ -14,11 +14,12 @@ int main(int argc, char* argv[])
     if (fin.is_open() && fout.is_open())
     {
         /* Reading strings from input file to list container */
-        while (not fin.eof())
+        while (!fin.eof())
         {
             getline(fin, myString);
             myList.push_back(myString);
         }
+
         /* Sorting strings */
         Module1::sort_strings(&myList);
 
@@ -26,11 +27,14 @@ int main(int argc, char* argv[])
         list<string>::iterator it;
         for (it = myList.begin(); it != myList.end(); it++)
         {
-            if(!myList.empty())
-            {
-                fout << *it << endl;
-            }
+            fout << *it << endl;
         }
+
+        fin.close();
+        fout.close();
+    } else
+    {
+        cout << "Can`t open the file";
 
         fin.close();
         fout.close();
