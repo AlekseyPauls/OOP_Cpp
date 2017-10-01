@@ -149,6 +149,33 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles\Lab1.dir\build.make CMakeFiles/Lab1.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+mytrit.obj: mytrit.cpp.obj
+
+.PHONY : mytrit.obj
+
+# target to build an object file
+mytrit.cpp.obj:
+	$(MAKE) -f CMakeFiles\Lab1.dir\build.make CMakeFiles/Lab1.dir/mytrit.cpp.obj
+.PHONY : mytrit.cpp.obj
+
+mytrit.i: mytrit.cpp.i
+
+.PHONY : mytrit.i
+
+# target to preprocess a source file
+mytrit.cpp.i:
+	$(MAKE) -f CMakeFiles\Lab1.dir\build.make CMakeFiles/Lab1.dir/mytrit.cpp.i
+.PHONY : mytrit.cpp.i
+
+mytrit.s: mytrit.cpp.s
+
+.PHONY : mytrit.s
+
+# target to generate assembly for a file
+mytrit.cpp.s:
+	$(MAKE) -f CMakeFiles\Lab1.dir\build.make CMakeFiles/Lab1.dir/mytrit.cpp.s
+.PHONY : mytrit.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -161,6 +188,9 @@ help:
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... mytrit.obj
+	@echo ... mytrit.i
+	@echo ... mytrit.s
 .PHONY : help
 
 

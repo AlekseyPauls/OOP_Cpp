@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+F:/OOP_Cpp/Lab1/main.cpp
+iostream
+-
+mytrit.h
+F:/OOP_Cpp/Lab1/mytrit.h
+
+F:/OOP_Cpp/Lab1/mytrit.cpp
+mytrit.h
+F:/OOP_Cpp/Lab1/mytrit.h
+
+F:/OOP_Cpp/Lab1/mytrit.h
+cstdlib
+-
+cmath
+-
+cstdint
+-
+

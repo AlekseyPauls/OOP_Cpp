@@ -85,6 +85,12 @@
 		<Unit filename="F:/OOP_Cpp/Lab1/main.cpp">
 			<Option target="Lab1"/>
 		</Unit>
+		<Unit filename="F:/OOP_Cpp/Lab1/mytrit.cpp">
+			<Option target="Lab1"/>
+		</Unit>
+		<Unit filename="F:/OOP_Cpp/Lab1/mytrit.h">
+			<Option target="Lab1"/>
+		</Unit>
 		<Unit filename="F:/OOP_Cpp/Lab1/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
