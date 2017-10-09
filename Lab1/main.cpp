@@ -2,6 +2,11 @@
 #include "mytrit.h"
 
 int main() {
-    std::cout << (ceil(17 * 2 / 8 / sizeof(uint))) << std::endl;
+    trit_set::TritSet A(10);
+    trit_set::TritSet B(10);
+    A[5] = trit_set::False;
+
+    A = A & B;
+
     return 0;
 }
