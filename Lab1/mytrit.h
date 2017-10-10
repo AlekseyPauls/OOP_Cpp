@@ -26,10 +26,11 @@ namespace trit_set {
         ~TritSet(); // Деструктор
         Trit operator[](size_t) const;
         reference operator[](size_t);
-        TritSet operator&(const TritSet, const TritSet);
+        friend   TritSet operator&(const TritSet, const TritSet);
         TritSet operator|(const TritSet, const TritSet);
         TritSet operator~() const;
         void set();
         void set(size_t, Trit);
     };
+    TritSet operator&(const TritSet, const TritSet);
 }

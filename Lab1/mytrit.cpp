@@ -124,7 +124,9 @@ namespace trit_set {
         }
     }
 
-    TritSet operator~() const {
-        for (size_t i = 0; i < this->size; )
+    TritSet TritSet::operator~() const {
+        for (size_t i = 0; i < this->size; i++) {
+
+        }
     }
 }
