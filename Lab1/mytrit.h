@@ -17,19 +17,21 @@ namespace trit_set {
             friend class TritSet;
             uint *ptr;
             int index;
-            reference(uint *, int);
+            TritSet *tset;
+            reference(uint *, int, TritSet *);
         public:
-            reference& operator=(TritSet&, Trit);
-            reference& operator=(TritSet&, const reference&);
+            reference& operator=(Trit);
+            reference& operator=(const reference&);
         };
         TritSet(size_t); // Конструктор
         ~TritSet(); // Деструктор
         Trit operator[](size_t) const;
         reference operator[](size_t);
-        TritSet operator&(const TritSet, const TritSet);
-        TritSet operator|(const TritSet, const TritSet);
-        TritSet operator~() const;
-        void set();
-        void set(size_t, Trit);
+        friend TritSet operator&(const TritSet, const TritSet);
+        friend TritSet operator|(const TritSet, const TritSet);
+        friend TritSet operator~(const TritSet);
     };
+    TritSet operator&(const TritSet, const TritSet);
+    TritSet operator|(const TritSet, const TritSet);
+    TritSet operator~(const TritSet);
 }
