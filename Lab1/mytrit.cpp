@@ -3,23 +3,50 @@
 namespace trit_set {
 
     TritSet::TritSet(size_t set_size) {
-        uint real_size = ceil((double)set_size * 2 / 8 / sizeof(uint));
+        uint real_size = ceil((double)(set_size + 1) * 2 / 8 / sizeof(uint));
         begin = (uint *) malloc(sizeof(uint) * real_size);
         for (size_t i = 0; i < real_size; i++) {
             begin[i] = 0;
         }
         size = set_size;
-        return;
+        new_pos = 0;
+        last_chahged_trit = 0;
+    }
+
+    TritSet::TritSet(const TritSet &A) {
+        uint real_size = ceil((double)A.size * 2 / 8 / sizeof(uint))  + 1;
+        begin = (uint *) malloc(sizeof(uint) * real_size);
+        for (size_t i = 0; i < real_size; i++) {
+            begin[i] = A.begin[i];
+        }
+        size = A.size;
+        new_pos = A.new_pos;
+        last_chahged_trit = A.last_chahged_trit;
     }
 
     TritSet::~TritSet() {
         free(begin);
-        return;
+        begin = 0;
+    }
+
+    TritSet& TritSet::operator=(const TritSet& tset) {
+        if (this != &tset) {
+            free(begin);
+            uint real_size = ceil((double)(tset.size + 1) * 2 / 8 / sizeof(uint));
+            begin = (uint *) malloc(sizeof(uint) * real_size);
+            for (size_t i = 0; i < real_size; i++) {
+                begin[i] = tset.begin[i];
+            }
+            size = tset.size;
+            new_pos = tset.new_pos;
+            last_chahged_trit = tset.last_chahged_trit;
+        }
+        return *this;
     }
 
     Trit TritSet::operator[](size_t position) const {
-        uint *trit_ptr = begin + position / sizeof(uint);
-        int trit_index = position - (position / sizeof(uint))*sizeof(uint);
+        uint *trit_ptr = begin + (position + 1) * 2 / 8 / sizeof(uint);
+        int trit_index = position - (position * 2 / 8 / sizeof(uint))*sizeof(uint) * 8 / 2;
         int t = (*trit_ptr >> trit_index * 2) & (uint)3;
         if (t == 0) {return Unknown;}
         if (t == 1) {return True;} else {return False;}
@@ -27,8 +54,8 @@ namespace trit_set {
 
     TritSet::reference TritSet::operator[](size_t position) {
         if (position <= size) {
-            uint *trit_ptr = begin + position / sizeof(uint);
-            int trit_index = position - (position / (sizeof(uint) * 8)) * sizeof(uint) * 8;
+            uint *trit_ptr = begin + (position + 1) * 2 / 8 / sizeof(uint);
+            int trit_index = position - (position * 2 / 8 / sizeof(uint))*sizeof(uint) * 8 / 2;
             TritSet::reference ref(trit_ptr, trit_index, this);
             return ref;
         } else {
@@ -50,10 +77,10 @@ namespace trit_set {
             return *this;
         }
         if (this->tset->new_pos > this->tset->size) {
-            uint old_real_size = ceil((double) this->tset->size * 2 / 8 / sizeof(uint));
-            uint new_real_size = ceil((double) (this->tset->size + 1) * 2 / 8 / sizeof(uint));
+            uint old_real_size = ceil((double)(this->tset->size + 1) * 2 / 8 / sizeof(uint));
+            uint new_real_size = ceil((double)(this->tset->size + 1) * 2 / 8 / sizeof(uint));
             uint *tmp = (uint *) malloc(sizeof(uint) * new_real_size);
-            for (uint i = 0; i <= new_real_size; i++) {
+            for (uint i = 0; i < new_real_size; i++) {
                 if (i < old_real_size) {
                     tmp[i] = this->tset->begin[i];
                 } else {
@@ -68,6 +95,7 @@ namespace trit_set {
         }
         *ptr = *ptr & ~((uint)3 << 2 * index);
         *ptr = *ptr | ((uint)t << 2 * index);
+        this->tset->last_chahged_trit = this->tset->new_pos;
         return *this;
     }
 
@@ -77,10 +105,10 @@ namespace trit_set {
             return *this;
         }
         if (this->tset->new_pos > this->tset->size) {
-            uint old_real_size = ceil((double) this->tset->size * 2 / 8 / sizeof(uint));
-            uint new_real_size = ceil((double) (this->tset->size + 1) * 2 / 8 / sizeof(uint));
+            uint old_real_size = ceil((double)(this->tset->size + 1) * 2 / 8 / sizeof(uint));
+            uint new_real_size = ceil((double)(this->tset->size + 1) * 2 / 8 / sizeof(uint));
             uint *tmp = (uint *) malloc(sizeof(uint) * new_real_size);
-            for (uint i = 0; i <= new_real_size; i++) {
+            for (uint i = 0; i < new_real_size; i++) {
                 if (i < old_real_size) {
                     tmp[i] = this->tset->begin[i];
                 } else {
@@ -95,29 +123,114 @@ namespace trit_set {
         }
         this->index = other.index;
         this->ptr = other.ptr;
+        this->tset->last_chahged_trit = this->tset->new_pos;
         return *this;
     }
 
-    TritSet operator&(const TritSet A, const TritSet B) { //!!!
+    void TritSet::shrink() {
+        uint real_size = ceil((double)(this->last_chahged_trit + 1) * 2 / 8 / sizeof(uint));
+        uint *new_begin = (uint*) malloc(real_size * sizeof(uint));
+        for (size_t i = 0; i < last_chahged_trit; i++) {
+            size_t ptr_number = i * 2 / sizeof(uint) / 8;
+            size_t trit_pos = i - ptr_number * sizeof(uint) * 8 / 2;
+            uint t = (begin[ptr_number] >> 2 * trit_pos) & (uint)3;
+            new_begin[ptr_number] = new_begin[ptr_number] | (t << 2 * trit_pos);
+        }
+        free(begin);
+        begin = new_begin;
+        size = last_chahged_trit;
+    }
+
+    void TritSet::trim(size_t last_index) {
+        uint real_size = ceil((double)(last_index + 1) * 2 / 8 / sizeof(uint));
+        uint *new_begin = (uint*) malloc(real_size * sizeof(uint));
+        for (size_t i = 0; i < last_index; i++) {
+            size_t ptr_number = i * 2 / sizeof(uint) / 8;
+            size_t trit_pos = i - ptr_number * sizeof(uint) * 8 / 2;
+            uint t = (begin[ptr_number] >> 2 * trit_pos) & (uint)3;
+            new_begin[ptr_number] = new_begin[ptr_number] | (t << 2 * trit_pos);
+        }
+        free(begin);
+        begin = new_begin;
+        size = last_index;
+    }
+
+    size_t TritSet::length() {
+        for (size_t i = this->size - 1; i >= 0; i--) {
+            size_t ptr_number = i * 2 / sizeof(uint) / 8;
+            size_t trit_pos = i - ptr_number * sizeof(uint) * 8 / 2;
+            uint t = (begin[ptr_number] >> 2 * trit_pos) & (uint)3;
+            if (t != 0) {
+                return i + 1;
+            }
+        }
+        return 0;
+    }
+
+    size_t TritSet::cardinality(Trit value) {
+        size_t trit_counter = 0;
+        for (size_t i = 0; i < this->size; i++) {
+            size_t ptr_number = i * 2 / sizeof(uint) / 8;
+            size_t trit_pos = i - ptr_number * sizeof(uint) * 8 / 2;
+            uint t = (begin[ptr_number] >> 2 * trit_pos) & (uint)3;
+            if (t == value) {
+                trit_counter++;
+            }
+        }
+        return trit_counter;
+    }
+
+    std::unordered_map< Trit, size_t, std::hash<int> > TritSet::cardinality() {
+        std::unordered_map< Trit, size_t, std::hash<int> > m;
+        size_t trits_true = this->cardinality(True);
+        size_t trits_false = this->cardinality(False);
+        size_t trits_unknown = this->cardinality(Unknown);
+        m.emplace(True, trits_true);
+        m.emplace(False, trits_false);
+        m.emplace(Unknown, trits_unknown);
+        return m;
+    };
+
+    TritSet operator&(const TritSet A, const TritSet B) {
         if (A.size >= B.size) {
             TritSet C(A.size);
             for (size_t i = 0; i < A.size; i++) {
+                size_t ptr_number = i * 2 / sizeof(uint) / 8;
+                size_t trit_pos = i - ptr_number * sizeof(uint) * 8 / 2;
                 if (i < B.size) {
-                    C.begin[i] = A.begin[i] & B.begin[i];
+                    uint t_A = (A.begin[ptr_number] >> 2 * trit_pos) & ((uint) 3);
+                    uint t_B = (B.begin[ptr_number] >> 2 * trit_pos) & ((uint) 3);
+                    if (t_A == 2 || t_B == 2) {
+                        C.begin[ptr_number] = C.begin[ptr_number] | ((uint)2 << 2 * trit_pos);
+                    } else if (t_A == t_B && t_A == 1) {
+                        C.begin[ptr_number] = C.begin[ptr_number] | ((uint)1 << 2 * trit_pos);
+                    }
                 } else {
-                    C.begin[i] = A.begin[i];
+                    uint t = (A.begin[ptr_number] >> 2 * trit_pos) & (uint)3;
+                    C.begin[ptr_number] = C.begin[ptr_number] | (t << 2 * trit_pos);
                 }
             }
+            C.last_chahged_trit = B.size;
             return C;
         } else {
             TritSet C(B.size);
-            for (size_t i = 0; i < B.size; i++) {
+            for (size_t i = 0; i < A.size; i++) {
+                size_t ptr_number = i * 2 / sizeof(uint) / 8;
+                size_t trit_pos = i - ptr_number * sizeof(uint) * 8 / 2;
                 if (i < A.size) {
-                    C.begin[i] = A.begin[i] & B.begin[i];
+                    uint t_A = (A.begin[ptr_number] >> 2 * trit_pos) & ((uint) 3);
+                    uint t_B = (B.begin[ptr_number] >> 2 * trit_pos) & ((uint) 3);
+                    if (t_A == 2 || t_B == 2) {
+                        C.begin[ptr_number] = C.begin[ptr_number] | ((uint)2 << 2 * trit_pos);
+                    } else if (t_A == t_B == 1) {
+                        C.begin[ptr_number] = C.begin[ptr_number] | ((uint)1 << 2 * trit_pos);
+                    }
                 } else {
-                    C.begin[i] = B.begin[i];
+                    uint t = (A.begin[ptr_number] >> 2 * trit_pos) & (uint)3;
+                    C.begin[ptr_number] = C.begin[ptr_number] | (t << 2 * trit_pos);
                 }
             }
+            C.last_chahged_trit = B.size;
             return C;
         }
     }
@@ -125,22 +238,42 @@ namespace trit_set {
         if (A.size >= B.size) {
             TritSet C(A.size);
             for (size_t i = 0; i < A.size; i++) {
+                size_t ptr_number = i * 2 / sizeof(uint) / 8;
+                size_t trit_pos = i - ptr_number * sizeof(uint) * 8 / 2;
                 if (i < B.size) {
-                    C.begin[i] = A.begin[i] | B.begin[i];
+                    uint t_A = (A.begin[ptr_number] >> 2 * trit_pos) & ((uint) 3);
+                    uint t_B = (B.begin[ptr_number] >> 2 * trit_pos) & ((uint) 3);
+                    if (t_A == 1 || t_B == 1) {
+                        C.begin[ptr_number] = C.begin[ptr_number] | ((uint)1 << 2 * trit_pos);
+                    } else if (t_A == t_B && t_A == 2) {
+                        C.begin[ptr_number] = C.begin[ptr_number] | ((uint)2 << 2 * trit_pos);
+                    }
                 } else {
-                    C.begin[i] = A.begin[i];
+                    uint t = (A.begin[ptr_number] >> 2 * trit_pos) & (uint)3;
+                    C.begin[ptr_number] = C.begin[ptr_number] | (t << 2 * trit_pos);
                 }
             }
+            C.last_chahged_trit = B.size;
             return C;
         } else {
             TritSet C(B.size);
-            for (size_t i = 0; i < B.size; i++) {
+            for (size_t i = 0; i < A.size; i++) {
+                size_t ptr_number = i * 2 / sizeof(uint) / 8;
+                size_t trit_pos = i - ptr_number * sizeof(uint) * 8 / 2;
                 if (i < A.size) {
-                    C.begin[i] = A.begin[i] | B.begin[i];
+                    uint t_A = (A.begin[ptr_number] >> 2 * trit_pos) & ((uint) 3);
+                    uint t_B = (B.begin[ptr_number] >> 2 * trit_pos) & ((uint) 3);
+                    if (t_A == 1 || t_B == 1) {
+                        C.begin[ptr_number] = C.begin[ptr_number] | ((uint)1 << 2 * trit_pos);
+                    } else if (t_A == t_B && t_A == 2) {
+                        C.begin[ptr_number] = C.begin[ptr_number] | ((uint)2 << 2 * trit_pos);
+                    }
                 } else {
-                    C.begin[i] = B.begin[i];
+                    uint t = (A.begin[ptr_number] >> 2 * trit_pos) & (uint)3;
+                    C.begin[ptr_number] = C.begin[ptr_number] | (t << 2 * trit_pos);
                 }
             }
+            C.last_chahged_trit = B.size;
             return C;
         }
     }
@@ -148,12 +281,15 @@ namespace trit_set {
     TritSet operator~(const TritSet A) {
         TritSet C(A.size);
         for (size_t i = 0; i < A.size; i++) {
-            size_t ptr_number = i / sizeof(uint) / 2;
-            size_t trit_pos = i - ptr_number * sizeof(uint) / 2;
-            uint t = (A.begin[ptr_number] >> 2 * trit_pos) & (~((uint)3));
-            C.begin[ptr_number] = C.begin[ptr_number] & ~((uint)3 << 2 * trit_pos);
-            C.begin[ptr_number] = C.begin[ptr_number] | (t << 2 * trit_pos);
+            size_t ptr_number = i * 2 / sizeof(uint) / 8;
+            size_t trit_pos = i - ptr_number * sizeof(uint) * 8 / 2;
+            uint t = (~A.begin[ptr_number] >> 2 * trit_pos) & ((uint)3);
+            if (t != 3) { // 3 - инвертированный 0 (Unknown)
+                C.begin[ptr_number] = C.begin[ptr_number] & ~((uint) 3 << 2 * trit_pos);
+                C.begin[ptr_number] = C.begin[ptr_number] | (t << 2 * trit_pos);
+            }
         }
+        C.last_chahged_trit = C.size;
         return C;
     }
 }
