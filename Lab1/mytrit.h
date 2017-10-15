@@ -2,6 +2,7 @@
 #include <cmath>
 #include <cstdint>
 #include <unordered_map>
+
 #define uint unsigned int
 
 namespace trit_set {
@@ -24,6 +25,7 @@ namespace trit_set {
         public:
             reference& operator=(Trit);
             reference& operator=(const reference&);
+            friend std::ostream& operator<<(std::ostream&, const reference&);
         };
         TritSet(size_t); // Конструктор
         TritSet(const TritSet&); // Конструктор копии
@@ -39,10 +41,13 @@ namespace trit_set {
         friend TritSet operator&(const TritSet, const TritSet);
         friend TritSet operator|(const TritSet, const TritSet);
         friend TritSet operator~(const TritSet);
+        friend std::ostream& operator<<(std::ostream&, const TritSet&);
     };
     TritSet operator&(const TritSet, const TritSet);
     TritSet operator|(const TritSet, const TritSet);
     TritSet operator~(const TritSet);
+    std::ostream& operator<<(std::ostream&, const TritSet&);
+    std::ostream& operator<<(std::ostream&, const TritSet::reference&);
 
     class my_exception {
     public:

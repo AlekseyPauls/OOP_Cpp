@@ -60,6 +60,7 @@ namespace trit_set {
 
     TritSet::reference TritSet::operator[](size_t position) {
         if (position <= size) {
+            this->last_chahged_trit = position;
             uint *trit_ptr = begin + (position + 1) * 2 / 8 / sizeof(uint);
             int trit_index = position - (position * 2 / 8 / sizeof(uint))*sizeof(uint) * 8 / 2;
             TritSet::reference ref(trit_ptr, trit_index, this);
@@ -95,12 +96,12 @@ namespace trit_set {
             free(this->tset->begin);
             this->tset->begin = tmp;
             this->tset->size = this->tset->new_pos;
+            this->tset->last_chahged_trit = this->tset->new_pos;
             this->ptr = this->tset->begin + this->tset->size / sizeof(uint);
             this->index = this->tset->size - (this->tset->size / (sizeof(uint) * 8)) * sizeof(uint) * 8;
         }
         *ptr = *ptr & ~((uint)3 << 2 * index);
         *ptr = *ptr | ((uint)t << 2 * index);
-        this->tset->last_chahged_trit = this->tset->new_pos;
         return *this;
     }
 
@@ -155,7 +156,7 @@ namespace trit_set {
     void TritSet::trim(size_t last_index) {
         uint real_size = ceil((double)(last_index + 1) * 2 / 8 / sizeof(uint));
         uint *new_begin = (uint*) malloc(real_size * sizeof(uint));
-        if (tmp == NULL) {
+        if (new_begin == NULL) {
             throw my_exception("Not enough memory for storage trimed TritSet");
         }
         for (size_t i = 0; i < last_index; i++) {
@@ -305,6 +306,45 @@ namespace trit_set {
         }
         C.last_chahged_trit = C.size;
         return C;
+    }
+
+    std::ostream& operator<<(std::ostream& os, const TritSet& tset) {
+        std::string trit;
+        std::string s = ", ";
+        for (size_t i = 0; i < tset.size; i++)
+        {
+            size_t ptr_number = i * 2 / sizeof(uint) / 8;
+            size_t trit_pos = i - ptr_number * sizeof(uint) * 8 / 2;
+            uint t = (tset.begin[ptr_number] >> 2 * trit_pos) & ((uint) 3);
+            if (t == 0) {
+                trit = "Unknown";
+            } else if (t == 1) {
+                trit = "True";
+            } else {
+                trit = "False";
+            }
+            if (i != tset.size - 1) {
+                os << trit << s;
+            } else {
+                os << trit;
+            }
+        }
+        return os;
+    }
+
+    std::ostream& operator<<(std::ostream& os, const TritSet::reference& ref) {
+        std::string trit;
+        std::string s = ", ";
+        uint t = (*ref.ptr >> 2 * ref.index) & ((uint) 3);
+        if (t == 0) {
+            trit = "Unknown";
+        } else if (t == 1) {
+            trit = "True";
+        } else {
+            trit = "False";
+        }
+        os << trit;
+        return os;
     }
 
     my_exception::my_exception(const std::string& msg) : message(msg) {}
