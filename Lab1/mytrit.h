@@ -43,4 +43,10 @@ namespace trit_set {
     TritSet operator&(const TritSet, const TritSet);
     TritSet operator|(const TritSet, const TritSet);
     TritSet operator~(const TritSet);
+
+    class my_exception {
+    public:
+        std::string message;
+        my_exception(const std::string& msg);
+    };
 }

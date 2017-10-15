@@ -2,26 +2,26 @@
 
 namespace trit_set {
 
-    TritSet::TritSet(size_t set_size) {
+    TritSet::TritSet(size_t set_size) : size(set_size), new_pos(0), last_chahged_trit(0) {
         uint real_size = ceil((double)(set_size + 1) * 2 / 8 / sizeof(uint));
         begin = (uint *) malloc(sizeof(uint) * real_size);
+        if (begin == NULL) {
+            throw my_exception("Not enough memory for storage TritSet of this length");
+        }
         for (size_t i = 0; i < real_size; i++) {
             begin[i] = 0;
         }
-        size = set_size;
-        new_pos = 0;
-        last_chahged_trit = 0;
     }
 
-    TritSet::TritSet(const TritSet &A) {
+    TritSet::TritSet(const TritSet &A) : size(A.size), new_pos(A.new_pos), last_chahged_trit(A.last_chahged_trit) {
         uint real_size = ceil((double)A.size * 2 / 8 / sizeof(uint))  + 1;
         begin = (uint *) malloc(sizeof(uint) * real_size);
+        if (begin == NULL) {
+            throw my_exception("Not enough memory for storage TritSet of this length");
+        }
         for (size_t i = 0; i < real_size; i++) {
             begin[i] = A.begin[i];
         }
-        size = A.size;
-        new_pos = A.new_pos;
-        last_chahged_trit = A.last_chahged_trit;
     }
 
     TritSet::~TritSet() {
@@ -34,6 +34,9 @@ namespace trit_set {
             free(begin);
             uint real_size = ceil((double)(tset.size + 1) * 2 / 8 / sizeof(uint));
             begin = (uint *) malloc(sizeof(uint) * real_size);
+            if (begin == NULL) {
+                throw my_exception("Not enough memory for storage TritSet of this length");
+            }
             for (size_t i = 0; i < real_size; i++) {
                 begin[i] = tset.begin[i];
             }
@@ -45,6 +48,9 @@ namespace trit_set {
     }
 
     Trit TritSet::operator[](size_t position) const {
+        if (position < 0 || position > size) {
+            throw my_exception("Error: trit index is outside tritset");
+        }
         uint *trit_ptr = begin + (position + 1) * 2 / 8 / sizeof(uint);
         int trit_index = position - (position * 2 / 8 / sizeof(uint))*sizeof(uint) * 8 / 2;
         int t = (*trit_ptr >> trit_index * 2) & (uint)3;
@@ -65,14 +71,10 @@ namespace trit_set {
         }
     }
 
-    TritSet::reference::reference(uint *trit_ptr, int trit_index, TritSet *trit_set) {
-        ptr = trit_ptr;
-        index = trit_index;
-        tset = trit_set;
-        return;
-    }
+    TritSet::reference::reference(uint *trit_ptr, int trit_index, TritSet *trit_set) :
+            ptr(trit_ptr), index(trit_index), tset(trit_set) {}
 
-    TritSet::reference& TritSet::reference::operator=(Trit t) { //!!!
+    TritSet::reference& TritSet::reference::operator=(Trit t) {
         if (this->tset->new_pos > this->tset->size && t == Unknown) {
             return *this;
         }
@@ -80,6 +82,9 @@ namespace trit_set {
             uint old_real_size = ceil((double)(this->tset->size + 1) * 2 / 8 / sizeof(uint));
             uint new_real_size = ceil((double)(this->tset->size + 1) * 2 / 8 / sizeof(uint));
             uint *tmp = (uint *) malloc(sizeof(uint) * new_real_size);
+            if (tmp == NULL) {
+                throw my_exception("Not enough memory for storage TritSet of length including a new element");
+            }
             for (uint i = 0; i < new_real_size; i++) {
                 if (i < old_real_size) {
                     tmp[i] = this->tset->begin[i];
@@ -108,6 +113,9 @@ namespace trit_set {
             uint old_real_size = ceil((double)(this->tset->size + 1) * 2 / 8 / sizeof(uint));
             uint new_real_size = ceil((double)(this->tset->size + 1) * 2 / 8 / sizeof(uint));
             uint *tmp = (uint *) malloc(sizeof(uint) * new_real_size);
+            if (tmp == NULL) {
+                throw my_exception("Not enough memory for storage TritSet of length including a new element");
+            }
             for (uint i = 0; i < new_real_size; i++) {
                 if (i < old_real_size) {
                     tmp[i] = this->tset->begin[i];
@@ -130,6 +138,9 @@ namespace trit_set {
     void TritSet::shrink() {
         uint real_size = ceil((double)(this->last_chahged_trit + 1) * 2 / 8 / sizeof(uint));
         uint *new_begin = (uint*) malloc(real_size * sizeof(uint));
+        if (new_begin == NULL) {
+            throw my_exception("Not enough memory for storage shrinked TritSet");
+        }
         for (size_t i = 0; i < last_chahged_trit; i++) {
             size_t ptr_number = i * 2 / sizeof(uint) / 8;
             size_t trit_pos = i - ptr_number * sizeof(uint) * 8 / 2;
@@ -144,6 +155,9 @@ namespace trit_set {
     void TritSet::trim(size_t last_index) {
         uint real_size = ceil((double)(last_index + 1) * 2 / 8 / sizeof(uint));
         uint *new_begin = (uint*) malloc(real_size * sizeof(uint));
+        if (tmp == NULL) {
+            throw my_exception("Not enough memory for storage trimed TritSet");
+        }
         for (size_t i = 0; i < last_index; i++) {
             size_t ptr_number = i * 2 / sizeof(uint) / 8;
             size_t trit_pos = i - ptr_number * sizeof(uint) * 8 / 2;
@@ -292,4 +306,6 @@ namespace trit_set {
         C.last_chahged_trit = C.size;
         return C;
     }
+
+    my_exception::my_exception(const std::string& msg) : message(msg) {}
 }
