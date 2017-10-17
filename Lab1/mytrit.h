@@ -2,6 +2,7 @@
 #include <cmath>
 #include <cstdint>
 #include <unordered_map>
+#include <iostream>
 
 #define uint unsigned int
 

@@ -80,28 +80,36 @@ namespace trit_set {
             return *this;
         }
         if (this->tset->new_pos > this->tset->size) {
-            uint old_real_size = ceil((double)(this->tset->size + 1) * 2 / 8 / sizeof(uint));
-            uint new_real_size = ceil((double)(this->tset->size + 1) * 2 / 8 / sizeof(uint));
+            uint new_real_size = ceil((double)(this->tset->new_pos + 1) * 2 / 8 / sizeof(uint));
             uint *tmp = (uint *) malloc(sizeof(uint) * new_real_size);
             if (tmp == NULL) {
                 throw my_exception("Not enough memory for storage TritSet of length including a new element");
             }
-            for (uint i = 0; i < new_real_size; i++) {
-                if (i < old_real_size) {
-                    tmp[i] = this->tset->begin[i];
+            for (size_t  i = 0; i < new_real_size; i++) {
+                tmp[i] = 0;
+            }
+            for (size_t i = 0; i <= this->tset->new_pos; i++) {
+                size_t ptr_number = i * 2 / sizeof(uint) / 8;
+                size_t trit_pos = i - ptr_number * sizeof(uint) * 8 / 2;
+                if (i < this->tset->size) {
+                    uint t = (this->tset->begin[ptr_number] >> 2 * trit_pos) & (uint)3;
+                    tmp[ptr_number] = tmp[ptr_number] & ~((uint)3 << 2 * trit_pos);
+                    tmp[ptr_number] = tmp[ptr_number] | (t << 2 * trit_pos);
                 } else {
-                    tmp[i] = 0;
+                    tmp[ptr_number] = tmp[ptr_number] & ~((uint)3 << 2 * trit_pos);
+                    std::cout << tmp[ptr_number] << ' ';
                 }
             }
             free(this->tset->begin);
             this->tset->begin = tmp;
             this->tset->size = this->tset->new_pos;
             this->tset->last_chahged_trit = this->tset->new_pos;
-            this->ptr = this->tset->begin + this->tset->size / sizeof(uint);
-            this->index = this->tset->size - (this->tset->size / (sizeof(uint) * 8)) * sizeof(uint) * 8;
+            this->ptr = this->tset->begin + (this->tset->size * 2 / 8 / sizeof(uint)) * sizeof(uint) ;
+            this->index = this->tset->size - (this->tset->size * 2/ 8 / sizeof(uint)) * sizeof(uint) * 8 /2;
         }
         *ptr = *ptr & ~((uint)3 << 2 * index);
         *ptr = *ptr | ((uint)t << 2 * index);
+
         return *this;
     }
 
@@ -111,17 +119,19 @@ namespace trit_set {
             return *this;
         }
         if (this->tset->new_pos > this->tset->size) {
-            uint old_real_size = ceil((double)(this->tset->size + 1) * 2 / 8 / sizeof(uint));
-            uint new_real_size = ceil((double)(this->tset->size + 1) * 2 / 8 / sizeof(uint));
+            uint new_real_size = ceil((double)(this->tset->new_pos + 1) * 2 / 8 / sizeof(uint));
             uint *tmp = (uint *) malloc(sizeof(uint) * new_real_size);
             if (tmp == NULL) {
                 throw my_exception("Not enough memory for storage TritSet of length including a new element");
             }
-            for (uint i = 0; i < new_real_size; i++) {
-                if (i < old_real_size) {
-                    tmp[i] = this->tset->begin[i];
+            for (size_t i = 0; i < this->tset->new_pos; i++) {
+                size_t ptr_number = i * 2 / sizeof(uint) / 8;
+                size_t trit_pos = i - ptr_number * sizeof(uint) * 8 / 2;
+                if (i < this->tset->size) {
+                    uint t = (this->tset->begin[ptr_number] >> 2 * trit_pos) & ((uint) 3);
+                    this->tset->begin[ptr_number] = this->tset->begin[ptr_number] | (t << 2 * trit_pos);
                 } else {
-                    tmp[i] = 0;
+                    this->tset->begin[ptr_number] = this->tset->begin[ptr_number] | (0 << 2 * trit_pos);
                 }
             }
             free(this->tset->begin);
@@ -200,9 +210,9 @@ namespace trit_set {
         size_t trits_true = this->cardinality(True);
         size_t trits_false = this->cardinality(False);
         size_t trits_unknown = this->cardinality(Unknown);
-        m.emplace(True, trits_true);
-        m.emplace(False, trits_false);
-        m.emplace(Unknown, trits_unknown);
+        m[True] = trits_true;
+        m[False] = trits_false;
+        m[Unknown] = trits_unknown;
         return m;
     };
 

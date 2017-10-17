@@ -6,17 +6,17 @@
 
 #IncludeRegexTransform: 
 
-F:/OOP_Cpp/Lab1/main.cpp
+H:/OOP_Cpp/Lab1/main.cpp
 iostream
 -
 mytrit.h
-F:/OOP_Cpp/Lab1/mytrit.h
+H:/OOP_Cpp/Lab1/mytrit.h
 
-F:/OOP_Cpp/Lab1/mytrit.cpp
+H:/OOP_Cpp/Lab1/mytrit.cpp
 mytrit.h
-F:/OOP_Cpp/Lab1/mytrit.h
+H:/OOP_Cpp/Lab1/mytrit.h
 
-F:/OOP_Cpp/Lab1/mytrit.h
+H:/OOP_Cpp/Lab1/mytrit.h
 cstdlib
 -
 cmath
@@ -24,5 +24,7 @@ cmath
 cstdint
 -
 unordered_map
+-
+iostream
 -
 

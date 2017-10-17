@@ -23,6 +23,8 @@ int main() {
     std::cout << "TritSet A trim: " << A << std::endl;
     B.shrink();
     std::cout << "TritSet B shrink: " << B << std::endl;
+    A[5] = True;
+    std::cout << "TritSet A have 10000 trit: " << A << std::endl;
 
 
     return 0;
