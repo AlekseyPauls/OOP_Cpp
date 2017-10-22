@@ -2,43 +2,37 @@
 
 namespace trit_set {
 
+    TritSet::TritSet() : start(NULL), size(0), new_pos(0), last_chahged_trit(0) {}
+
     TritSet::TritSet(size_t set_size) : size(set_size), new_pos(0), last_chahged_trit(0) {
         uint real_size = ceil((double)(set_size + 1) * 2 / 8 / sizeof(uint));
-        begin = (uint *) malloc(sizeof(uint) * real_size);
-        if (begin == NULL) {
-            throw my_exception("Not enough memory for storage TritSet of this length");
-        }
+        start = new uint[real_size];
         for (size_t i = 0; i < real_size; i++) {
-            begin[i] = 0;
+            start[i] = 0;
         }
     }
 
-    TritSet::TritSet(const TritSet &A) : size(A.size), new_pos(A.new_pos), last_chahged_trit(A.last_chahged_trit) {
-        uint real_size = ceil((double)A.size * 2 / 8 / sizeof(uint))  + 1;
-        begin = (uint *) malloc(sizeof(uint) * real_size);
-        if (begin == NULL) {
-            throw my_exception("Not enough memory for storage TritSet of this length");
-        }
+    TritSet::TritSet(const TritSet &tset) : size(tset.size), new_pos(tset.new_pos),
+                                            last_chahged_trit(tset.last_chahged_trit) {
+        uint real_size = ceil((double)tset.size * 2 / 8 / sizeof(uint))  + 1;
+        start = new uint[real_size];
         for (size_t i = 0; i < real_size; i++) {
-            begin[i] = A.begin[i];
+            start[i] = tset.start[i];
         }
     }
 
     TritSet::~TritSet() {
-        free(begin);
-        begin = 0;
+        delete[] start;
+        start = 0;
     }
 
     TritSet& TritSet::operator=(const TritSet& tset) {
         if (this != &tset) {
-            free(begin);
+            delete[] start;
             uint real_size = ceil((double)(tset.size + 1) * 2 / 8 / sizeof(uint));
-            begin = (uint *) malloc(sizeof(uint) * real_size);
-            if (begin == NULL) {
-                throw my_exception("Not enough memory for storage TritSet of this length");
-            }
+            start = new uint[real_size];
             for (size_t i = 0; i < real_size; i++) {
-                begin[i] = tset.begin[i];
+                start[i] = tset.start[i];
             }
             size = tset.size;
             new_pos = tset.new_pos;
@@ -51,7 +45,7 @@ namespace trit_set {
         if (position < 0 || position > size) {
             throw my_exception("Error: trit index is outside tritset");
         }
-        uint *trit_ptr = begin + (position + 1) * 2 / 8 / sizeof(uint);
+        uint *trit_ptr = start + (position + 1) * 2 / 8 / sizeof(uint);
         int trit_index = position - (position * 2 / 8 / sizeof(uint))*sizeof(uint) * 8 / 2;
         int t = (*trit_ptr >> trit_index * 2) & (uint)3;
         if (t == 0) {return Unknown;}
@@ -61,7 +55,7 @@ namespace trit_set {
     TritSet::reference TritSet::operator[](size_t position) {
         if (position <= size) {
             this->last_chahged_trit = position;
-            uint *trit_ptr = begin + (position + 1) * 2 / 8 / sizeof(uint);
+            uint *trit_ptr = start + (position + 1) * 2 / 8 / sizeof(uint);
             int trit_index = position - (position * 2 / 8 / sizeof(uint))*sizeof(uint) * 8 / 2;
             TritSet::reference ref(trit_ptr, trit_index, this);
             return ref;
@@ -81,10 +75,7 @@ namespace trit_set {
         }
         if (this->tset->new_pos > this->tset->size) {
             uint new_real_size = ceil((double)(this->tset->new_pos + 1) * 2 / 8 / sizeof(uint));
-            uint *tmp = (uint *) malloc(sizeof(uint) * new_real_size);
-            if (tmp == NULL) {
-                throw my_exception("Not enough memory for storage TritSet of length including a new element");
-            }
+            uint *tmp = new uint[new_real_size];
             for (size_t  i = 0; i < new_real_size; i++) {
                 tmp[i] = 0;
             }
@@ -92,19 +83,15 @@ namespace trit_set {
                 size_t ptr_number = i * 2 / sizeof(uint) / 8;
                 size_t trit_pos = i - ptr_number * sizeof(uint) * 8 / 2;
                 if (i < this->tset->size) {
-                    uint t = (this->tset->begin[ptr_number] >> 2 * trit_pos) & (uint)3;
-                    tmp[ptr_number] = tmp[ptr_number] & ~((uint)3 << 2 * trit_pos);
+                    uint t = (this->tset->start[ptr_number] >> 2 * trit_pos) & (uint)3;
                     tmp[ptr_number] = tmp[ptr_number] | (t << 2 * trit_pos);
-                } else {
-                    tmp[ptr_number] = tmp[ptr_number] & ~((uint)3 << 2 * trit_pos);
-                    std::cout << tmp[ptr_number] << ' ';
                 }
             }
-            free(this->tset->begin);
-            this->tset->begin = tmp;
+            delete[] this->tset->start;
+            this->tset->start = tmp;
             this->tset->size = this->tset->new_pos;
             this->tset->last_chahged_trit = this->tset->new_pos;
-            this->ptr = this->tset->begin + (this->tset->size * 2 / 8 / sizeof(uint)) * sizeof(uint) ;
+            this->ptr = this->tset->start + (this->tset->size * 2 / 8 / sizeof(uint));
             this->index = this->tset->size - (this->tset->size * 2/ 8 / sizeof(uint)) * sizeof(uint) * 8 /2;
         }
         *ptr = *ptr & ~((uint)3 << 2 * index);
@@ -120,25 +107,24 @@ namespace trit_set {
         }
         if (this->tset->new_pos > this->tset->size) {
             uint new_real_size = ceil((double)(this->tset->new_pos + 1) * 2 / 8 / sizeof(uint));
-            uint *tmp = (uint *) malloc(sizeof(uint) * new_real_size);
-            if (tmp == NULL) {
-                throw my_exception("Not enough memory for storage TritSet of length including a new element");
+            uint *tmp = new uint[new_real_size];
+            for (size_t  i = 0; i < new_real_size; i++) {
+                tmp[i] = 0;
             }
-            for (size_t i = 0; i < this->tset->new_pos; i++) {
+            for (size_t i = 0; i <= this->tset->new_pos; i++) {
                 size_t ptr_number = i * 2 / sizeof(uint) / 8;
                 size_t trit_pos = i - ptr_number * sizeof(uint) * 8 / 2;
                 if (i < this->tset->size) {
-                    uint t = (this->tset->begin[ptr_number] >> 2 * trit_pos) & ((uint) 3);
-                    this->tset->begin[ptr_number] = this->tset->begin[ptr_number] | (t << 2 * trit_pos);
-                } else {
-                    this->tset->begin[ptr_number] = this->tset->begin[ptr_number] | (0 << 2 * trit_pos);
+                    uint t = (this->tset->start[ptr_number] >> 2 * trit_pos) & (uint)3;
+                    tmp[ptr_number] = tmp[ptr_number] | (t << 2 * trit_pos);
                 }
             }
-            free(this->tset->begin);
-            this->tset->begin = tmp;
+            delete[] this->tset->start;
+            this->tset->start = tmp;
             this->tset->size = this->tset->new_pos;
-            this->ptr = this->tset->begin + this->tset->size / sizeof(uint);
-            this->index = this->tset->size - (this->tset->size / (sizeof(uint) * 8)) * sizeof(uint) * 8;
+            this->tset->last_chahged_trit = this->tset->new_pos;
+            this->ptr = this->tset->start + (this->tset->size * 2 / 8 / sizeof(uint));
+            this->index = this->tset->size - (this->tset->size * 2/ 8 / sizeof(uint)) * sizeof(uint) * 8 /2;
         }
         this->index = other.index;
         this->ptr = other.ptr;
@@ -146,37 +132,82 @@ namespace trit_set {
         return *this;
     }
 
+    /*bool operator==(const TritSet::reference& one, const TritSet::reference& two) {
+        return (one.ptr == two.ptr && one.index == two.index);
+    }*/
+
+    bool TritSet::reference::operator==(const TritSet::reference& one) {
+        return (ptr == one.ptr && index == one.index);
+    }
+
+    TritSet::TritIterator::TritIterator(reference& r) : ref(r) {}
+
+    TritSet::TritIterator::TritIterator(const TritIterator& it) : ref(it.ref) {}
+
+    /*bool TritSet::TritIterator::operator!=(TritIterator const& other) const {
+        return (this->ref.ptr != other.ref.ptr || this->ref.index != other.ref.index);
+    }*/
+
+    bool operator!=(TritSet::TritIterator const& one, TritSet::TritIterator const& two) {
+        return (~(one==two));
+    }
+
+    bool TritSet::TritIterator::operator==(TritIterator const& other) const {
+        return (ref.ptr == other.ref.ptr && ref.index == other.ref.index);
+    }
+
+    TritSet::TritIterator& TritSet::TritIterator::operator=(const TritSet::TritIterator& other) {
+        ref = other.ref;
+    }
+
+    TritSet::reference TritSet::TritIterator::operator*() const {
+        return ref;
+    }
+
+    TritSet::TritIterator& TritSet::TritIterator::operator++() {
+        if (ref.index == sizeof(uint) * 8 / 2 - 1) {
+            ref = reference(ref.ptr + 1, 0, ref.tset);
+        } else {
+            ref = reference(ref.ptr , ref.index + 1, ref.tset);
+        }
+        return *this;
+    }
+
+    std::ostream& operator<<(std::ostream& os, const TritSet::TritIterator& it) {
+        os << it.ref;
+    }
+
     void TritSet::shrink() {
         uint real_size = ceil((double)(this->last_chahged_trit + 1) * 2 / 8 / sizeof(uint));
-        uint *new_begin = (uint*) malloc(real_size * sizeof(uint));
-        if (new_begin == NULL) {
-            throw my_exception("Not enough memory for storage shrinked TritSet");
+        uint *new_start = new uint[real_size];
+        for (size_t i = 0; i < real_size; i++) {
+            new_start[0] = 0;
         }
         for (size_t i = 0; i < last_chahged_trit; i++) {
             size_t ptr_number = i * 2 / sizeof(uint) / 8;
             size_t trit_pos = i - ptr_number * sizeof(uint) * 8 / 2;
-            uint t = (begin[ptr_number] >> 2 * trit_pos) & (uint)3;
-            new_begin[ptr_number] = new_begin[ptr_number] | (t << 2 * trit_pos);
+            uint t = (start[ptr_number] >> 2 * trit_pos) & (uint)3;
+            new_start[ptr_number] = new_start[ptr_number] | (t << 2 * trit_pos);
         }
-        free(begin);
-        begin = new_begin;
+        delete[] start;
+        start = new_start;
         size = last_chahged_trit;
     }
 
     void TritSet::trim(size_t last_index) {
         uint real_size = ceil((double)(last_index + 1) * 2 / 8 / sizeof(uint));
-        uint *new_begin = (uint*) malloc(real_size * sizeof(uint));
-        if (new_begin == NULL) {
-            throw my_exception("Not enough memory for storage trimed TritSet");
+        uint *new_start = new uint[real_size];
+        for (size_t i = 0; i < real_size; i++) {
+            new_start[0] = 0;
         }
-        for (size_t i = 0; i < last_index; i++) {
+        for (size_t i = 0; i <= last_index; i++) {
             size_t ptr_number = i * 2 / sizeof(uint) / 8;
             size_t trit_pos = i - ptr_number * sizeof(uint) * 8 / 2;
-            uint t = (begin[ptr_number] >> 2 * trit_pos) & (uint)3;
-            new_begin[ptr_number] = new_begin[ptr_number] | (t << 2 * trit_pos);
+            uint t = (start[ptr_number] >> 2 * trit_pos) & (uint)3;
+            new_start[ptr_number] = new_start[ptr_number] | (t << 2 * trit_pos);
         }
-        free(begin);
-        begin = new_begin;
+        delete[] start;
+        start = new_start;
         size = last_index;
     }
 
@@ -184,7 +215,7 @@ namespace trit_set {
         for (size_t i = this->size - 1; i >= 0; i--) {
             size_t ptr_number = i * 2 / sizeof(uint) / 8;
             size_t trit_pos = i - ptr_number * sizeof(uint) * 8 / 2;
-            uint t = (begin[ptr_number] >> 2 * trit_pos) & (uint)3;
+            uint t = (start[ptr_number] >> 2 * trit_pos) & (uint)3;
             if (t != 0) {
                 return i + 1;
             }
@@ -197,7 +228,7 @@ namespace trit_set {
         for (size_t i = 0; i < this->size; i++) {
             size_t ptr_number = i * 2 / sizeof(uint) / 8;
             size_t trit_pos = i - ptr_number * sizeof(uint) * 8 / 2;
-            uint t = (begin[ptr_number] >> 2 * trit_pos) & (uint)3;
+            uint t = (start[ptr_number] >> 2 * trit_pos) & (uint)3;
             if (t == value) {
                 trit_counter++;
             }
@@ -216,6 +247,20 @@ namespace trit_set {
         return m;
     };
 
+    TritSet::TritIterator TritSet::begin() {
+        reference ref(start, 0, this);
+        TritIterator it(ref);
+        return it;
+    }
+
+    TritSet::TritIterator TritSet::end() {
+        uint *trit_ptr = start + (size + 1) * 2 / 8 / sizeof(uint);
+        int trit_index = size - (size * 2 / 8 / sizeof(uint))*sizeof(uint) * 8 / 2;
+        reference ref(trit_ptr, trit_index, this);
+        TritIterator it(ref);
+        return it;
+    }
+
     TritSet operator&(const TritSet A, const TritSet B) {
         if (A.size >= B.size) {
             TritSet C(A.size);
@@ -223,16 +268,16 @@ namespace trit_set {
                 size_t ptr_number = i * 2 / sizeof(uint) / 8;
                 size_t trit_pos = i - ptr_number * sizeof(uint) * 8 / 2;
                 if (i < B.size) {
-                    uint t_A = (A.begin[ptr_number] >> 2 * trit_pos) & ((uint) 3);
-                    uint t_B = (B.begin[ptr_number] >> 2 * trit_pos) & ((uint) 3);
+                    uint t_A = (A.start[ptr_number] >> 2 * trit_pos) & ((uint) 3);
+                    uint t_B = (B.start[ptr_number] >> 2 * trit_pos) & ((uint) 3);
                     if (t_A == 2 || t_B == 2) {
-                        C.begin[ptr_number] = C.begin[ptr_number] | ((uint)2 << 2 * trit_pos);
+                        C.start[ptr_number] = C.start[ptr_number] | ((uint)2 << 2 * trit_pos);
                     } else if (t_A == t_B && t_A == 1) {
-                        C.begin[ptr_number] = C.begin[ptr_number] | ((uint)1 << 2 * trit_pos);
+                        C.start[ptr_number] = C.start[ptr_number] | ((uint)1 << 2 * trit_pos);
                     }
                 } else {
-                    uint t = (A.begin[ptr_number] >> 2 * trit_pos) & (uint)3;
-                    C.begin[ptr_number] = C.begin[ptr_number] | (t << 2 * trit_pos);
+                    uint t = (A.start[ptr_number] >> 2 * trit_pos) & (uint)3;
+                    C.start[ptr_number] = C.start[ptr_number] | (t << 2 * trit_pos);
                 }
             }
             C.last_chahged_trit = B.size;
@@ -243,16 +288,16 @@ namespace trit_set {
                 size_t ptr_number = i * 2 / sizeof(uint) / 8;
                 size_t trit_pos = i - ptr_number * sizeof(uint) * 8 / 2;
                 if (i < A.size) {
-                    uint t_A = (A.begin[ptr_number] >> 2 * trit_pos) & ((uint) 3);
-                    uint t_B = (B.begin[ptr_number] >> 2 * trit_pos) & ((uint) 3);
+                    uint t_A = (A.start[ptr_number] >> 2 * trit_pos) & ((uint) 3);
+                    uint t_B = (B.start[ptr_number] >> 2 * trit_pos) & ((uint) 3);
                     if (t_A == 2 || t_B == 2) {
-                        C.begin[ptr_number] = C.begin[ptr_number] | ((uint)2 << 2 * trit_pos);
+                        C.start[ptr_number] = C.start[ptr_number] | ((uint)2 << 2 * trit_pos);
                     } else if (t_A == t_B == 1) {
-                        C.begin[ptr_number] = C.begin[ptr_number] | ((uint)1 << 2 * trit_pos);
+                        C.start[ptr_number] = C.start[ptr_number] | ((uint)1 << 2 * trit_pos);
                     }
                 } else {
-                    uint t = (A.begin[ptr_number] >> 2 * trit_pos) & (uint)3;
-                    C.begin[ptr_number] = C.begin[ptr_number] | (t << 2 * trit_pos);
+                    uint t = (A.start[ptr_number] >> 2 * trit_pos) & (uint)3;
+                    C.start[ptr_number] = C.start[ptr_number] | (t << 2 * trit_pos);
                 }
             }
             C.last_chahged_trit = B.size;
@@ -266,16 +311,16 @@ namespace trit_set {
                 size_t ptr_number = i * 2 / sizeof(uint) / 8;
                 size_t trit_pos = i - ptr_number * sizeof(uint) * 8 / 2;
                 if (i < B.size) {
-                    uint t_A = (A.begin[ptr_number] >> 2 * trit_pos) & ((uint) 3);
-                    uint t_B = (B.begin[ptr_number] >> 2 * trit_pos) & ((uint) 3);
+                    uint t_A = (A.start[ptr_number] >> 2 * trit_pos) & ((uint) 3);
+                    uint t_B = (B.start[ptr_number] >> 2 * trit_pos) & ((uint) 3);
                     if (t_A == 1 || t_B == 1) {
-                        C.begin[ptr_number] = C.begin[ptr_number] | ((uint)1 << 2 * trit_pos);
+                        C.start[ptr_number] = C.start[ptr_number] | ((uint)1 << 2 * trit_pos);
                     } else if (t_A == t_B && t_A == 2) {
-                        C.begin[ptr_number] = C.begin[ptr_number] | ((uint)2 << 2 * trit_pos);
+                        C.start[ptr_number] = C.start[ptr_number] | ((uint)2 << 2 * trit_pos);
                     }
                 } else {
-                    uint t = (A.begin[ptr_number] >> 2 * trit_pos) & (uint)3;
-                    C.begin[ptr_number] = C.begin[ptr_number] | (t << 2 * trit_pos);
+                    uint t = (A.start[ptr_number] >> 2 * trit_pos) & (uint)3;
+                    C.start[ptr_number] = C.start[ptr_number] | (t << 2 * trit_pos);
                 }
             }
             C.last_chahged_trit = B.size;
@@ -286,16 +331,16 @@ namespace trit_set {
                 size_t ptr_number = i * 2 / sizeof(uint) / 8;
                 size_t trit_pos = i - ptr_number * sizeof(uint) * 8 / 2;
                 if (i < A.size) {
-                    uint t_A = (A.begin[ptr_number] >> 2 * trit_pos) & ((uint) 3);
-                    uint t_B = (B.begin[ptr_number] >> 2 * trit_pos) & ((uint) 3);
+                    uint t_A = (A.start[ptr_number] >> 2 * trit_pos) & ((uint) 3);
+                    uint t_B = (B.start[ptr_number] >> 2 * trit_pos) & ((uint) 3);
                     if (t_A == 1 || t_B == 1) {
-                        C.begin[ptr_number] = C.begin[ptr_number] | ((uint)1 << 2 * trit_pos);
+                        C.start[ptr_number] = C.start[ptr_number] | ((uint)1 << 2 * trit_pos);
                     } else if (t_A == t_B && t_A == 2) {
-                        C.begin[ptr_number] = C.begin[ptr_number] | ((uint)2 << 2 * trit_pos);
+                        C.start[ptr_number] = C.start[ptr_number] | ((uint)2 << 2 * trit_pos);
                     }
                 } else {
-                    uint t = (A.begin[ptr_number] >> 2 * trit_pos) & (uint)3;
-                    C.begin[ptr_number] = C.begin[ptr_number] | (t << 2 * trit_pos);
+                    uint t = (A.start[ptr_number] >> 2 * trit_pos) & (uint)3;
+                    C.start[ptr_number] = C.start[ptr_number] | (t << 2 * trit_pos);
                 }
             }
             C.last_chahged_trit = B.size;
@@ -308,10 +353,10 @@ namespace trit_set {
         for (size_t i = 0; i < A.size; i++) {
             size_t ptr_number = i * 2 / sizeof(uint) / 8;
             size_t trit_pos = i - ptr_number * sizeof(uint) * 8 / 2;
-            uint t = (~A.begin[ptr_number] >> 2 * trit_pos) & ((uint)3);
+            uint t = (~A.start[ptr_number] >> 2 * trit_pos) & ((uint)3);
             if (t != 3) { // 3 - инвертированный 0 (Unknown)
-                C.begin[ptr_number] = C.begin[ptr_number] & ~((uint) 3 << 2 * trit_pos);
-                C.begin[ptr_number] = C.begin[ptr_number] | (t << 2 * trit_pos);
+                C.start[ptr_number] = C.start[ptr_number] & ~((uint) 3 << 2 * trit_pos);
+                C.start[ptr_number] = C.start[ptr_number] | (t << 2 * trit_pos);
             }
         }
         C.last_chahged_trit = C.size;
@@ -320,12 +365,11 @@ namespace trit_set {
 
     std::ostream& operator<<(std::ostream& os, const TritSet& tset) {
         std::string trit;
-        std::string s = ", ";
-        for (size_t i = 0; i < tset.size; i++)
+        for (size_t i = 0; i <= tset.size; i++)
         {
             size_t ptr_number = i * 2 / sizeof(uint) / 8;
             size_t trit_pos = i - ptr_number * sizeof(uint) * 8 / 2;
-            uint t = (tset.begin[ptr_number] >> 2 * trit_pos) & ((uint) 3);
+            uint t = (tset.start[ptr_number] >> 2 * trit_pos) & ((uint) 3);
             if (t == 0) {
                 trit = "Unknown";
             } else if (t == 1) {
@@ -333,8 +377,8 @@ namespace trit_set {
             } else {
                 trit = "False";
             }
-            if (i != tset.size - 1) {
-                os << trit << s;
+            if (i != tset.size) {
+                os << trit << ", ";
             } else {
                 os << trit;
             }
@@ -344,7 +388,6 @@ namespace trit_set {
 
     std::ostream& operator<<(std::ostream& os, const TritSet::reference& ref) {
         std::string trit;
-        std::string s = ", ";
         uint t = (*ref.ptr >> 2 * ref.index) & ((uint) 3);
         if (t == 0) {
             trit = "Unknown";

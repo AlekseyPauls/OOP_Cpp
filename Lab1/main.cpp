@@ -4,6 +4,7 @@
 using namespace trit_set;
 
 int main() {
+    TritSet C;
     TritSet A(5);
     TritSet B(5);
     A[1] = True;
@@ -23,9 +24,14 @@ int main() {
     std::cout << "TritSet A trim: " << A << std::endl;
     B.shrink();
     std::cout << "TritSet B shrink: " << B << std::endl;
-    A[5] = True;
-    std::cout << "TritSet A have 10000 trit: " << A << std::endl;
+    //A[10000] = True;
+    //std::cout << "TritSet A have 10000 trit: " << A << std::endl;
 
+    TritSet::TritIterator tritIterator = B.begin();
+   while(tritIterator != B.end()) {
+       std::cout << tritIterator << std::endl;
+       ++tritIterator;
+    }
 
     return 0;
 }
