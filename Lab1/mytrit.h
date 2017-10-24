@@ -19,7 +19,6 @@ namespace trit_set {
         class reference {
         private:
             friend class TritSet;
-            //friend bool operator==(TritSet::reference& one, TritSet::reference& two);
             uint *ptr;
             int index;
             TritSet *tset;
@@ -33,12 +32,11 @@ namespace trit_set {
         class TritIterator {
         private:
             friend class reference;
-            friend bool operator!=(TritIterator const& one, TritIterator const& two);
             reference ref;
         public:
             TritIterator(reference& r);
             TritIterator(const TritIterator& it);
-            //bool operator!=(TritIterator const& other) const;
+            bool operator!=(TritIterator const& other) const;
             bool operator==(TritIterator const& other) const;
             TritIterator& operator=(const TritIterator& other);
             reference operator*() const;
@@ -67,8 +65,6 @@ namespace trit_set {
     TritSet operator&(const TritSet A, const TritSet B);
     TritSet operator|(const TritSet A, const TritSet B);
     TritSet operator~(const TritSet A);
-
-    bool operator!=(TritSet::TritIterator const& one, TritSet::TritIterator const& two);
     std::ostream& operator<<(std::ostream& os, const TritSet& tset);
     std::ostream& operator<<(std::ostream& os, const TritSet::reference& ref);
     std::ostream& operator<<(std::ostream& os, const TritSet::TritIterator& it);

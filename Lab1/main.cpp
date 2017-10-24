@@ -27,17 +27,13 @@ int main() {
     //A[1000000] = True;
     //std::cout << "TritSet A have 10000 trit: " << A << std::endl;
 
-//    for(reference t : B)
-//    {
-//
-//    }
-//    for (Trit t: constTS)
-//    {
-//
-//    }
+    for(TritSet::reference t : B)
+    {
+        std::cout << t << std::endl;
+    }
 
     TritSet::TritIterator tritIterator = A.begin();
-   while(tritIterator != A.end()) {
+    while(tritIterator != A.end()) {
        std::cout << tritIterator << std::endl;
        ++tritIterator;
     }

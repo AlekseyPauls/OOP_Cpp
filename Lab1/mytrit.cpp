@@ -134,10 +134,6 @@ namespace trit_set {
         return *this;
     }
 
-    /*bool operator==(const TritSet::reference& one, const TritSet::reference& two) {
-        return (one.ptr == two.ptr && one.index == two.index);
-    }*/
-
     bool TritSet::reference::operator==(const TritSet::reference& one) {
         return (ptr == one.ptr && index == one.index);
     }
@@ -146,13 +142,8 @@ namespace trit_set {
 
     TritSet::TritIterator::TritIterator(const TritIterator& it) : ref(it.ref) {}
 
-    /*bool TritSet::TritIterator::operator!=(TritIterator const& other) const {
-        return (this->ref.ptr != other.ref.ptr || this->ref.index != other.ref.index);
-    }*/
-
-    bool operator!=(TritSet::TritIterator const& one, TritSet::TritIterator const& two) {
-        bool b = (~(one==two));
-        return b;
+    bool TritSet::TritIterator::operator!=(TritIterator const& other) const {
+        return (ref.ptr != other.ref.ptr || ref.index != other.ref.index);
     }
 
     bool TritSet::TritIterator::operator==(TritIterator const& other) const {
@@ -259,6 +250,7 @@ namespace trit_set {
     TritSet::TritIterator TritSet::end() {
         reference ref = (*this)[size];
         TritIterator it(ref);
+        ++it;
         return it;
     }
 
