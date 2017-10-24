@@ -34,7 +34,7 @@ namespace trit_set {
         private:
             friend class reference;
             friend bool operator!=(TritIterator const& one, TritIterator const& two);
-            reference& ref;
+            reference ref;
         public:
             TritIterator(reference& r);
             TritIterator(const TritIterator& it);

@@ -24,11 +24,20 @@ int main() {
     std::cout << "TritSet A trim: " << A << std::endl;
     B.shrink();
     std::cout << "TritSet B shrink: " << B << std::endl;
-    //A[10000] = True;
+    //A[1000000] = True;
     //std::cout << "TritSet A have 10000 trit: " << A << std::endl;
 
-    TritSet::TritIterator tritIterator = B.begin();
-   while(tritIterator != B.end()) {
+//    for(reference t : B)
+//    {
+//
+//    }
+//    for (Trit t: constTS)
+//    {
+//
+//    }
+
+    TritSet::TritIterator tritIterator = A.begin();
+   while(tritIterator != A.end()) {
        std::cout << tritIterator << std::endl;
        ++tritIterator;
     }

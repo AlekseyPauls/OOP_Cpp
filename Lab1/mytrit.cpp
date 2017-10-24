@@ -2,7 +2,7 @@
 
 namespace trit_set {
 
-    TritSet::TritSet() : start(NULL), size(0), new_pos(0), last_chahged_trit(0) {}
+    TritSet::TritSet() : start(nullptr), size(0), new_pos(0), last_chahged_trit(0) {}
 
     TritSet::TritSet(size_t set_size) : size(set_size), new_pos(0), last_chahged_trit(0) {
         uint real_size = ceil((double)(set_size + 1) * 2 / 8 / sizeof(uint));
@@ -23,7 +23,7 @@ namespace trit_set {
 
     TritSet::~TritSet() {
         delete[] start;
-        start = 0;
+        start = nullptr;
     }
 
     TritSet& TritSet::operator=(const TritSet& tset) {
@@ -40,6 +40,8 @@ namespace trit_set {
         }
         return *this;
     }
+
+    //a=b=c;
 
     Trit TritSet::operator[](size_t position) const {
         if (position < 0 || position > size) {
@@ -149,7 +151,8 @@ namespace trit_set {
     }*/
 
     bool operator!=(TritSet::TritIterator const& one, TritSet::TritIterator const& two) {
-        return (~(one==two));
+        bool b = (~(one==two));
+        return b;
     }
 
     bool TritSet::TritIterator::operator==(TritIterator const& other) const {
@@ -248,15 +251,13 @@ namespace trit_set {
     };
 
     TritSet::TritIterator TritSet::begin() {
-        reference ref(start, 0, this);
+        reference ref = (*this)[0];
         TritIterator it(ref);
         return it;
     }
 
     TritSet::TritIterator TritSet::end() {
-        uint *trit_ptr = start + (size + 1) * 2 / 8 / sizeof(uint);
-        int trit_index = size - (size * 2 / 8 / sizeof(uint))*sizeof(uint) * 8 / 2;
-        reference ref(trit_ptr, trit_index, this);
+        reference ref = (*this)[size];
         TritIterator it(ref);
         return it;
     }
