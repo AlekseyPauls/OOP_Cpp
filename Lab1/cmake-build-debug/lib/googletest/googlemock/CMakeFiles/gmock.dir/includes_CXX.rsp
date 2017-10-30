@@ -1,0 +1,1 @@
+-IF:/OOP_Cpp/Lab1/lib/googletest/googlemock/include -IF:/OOP_Cpp/Lab1/lib/googletest/googlemock -IF:/OOP_Cpp/Lab1/lib/googletest/googletest/include -IF:/OOP_Cpp/Lab1/lib/googletest/googletest 

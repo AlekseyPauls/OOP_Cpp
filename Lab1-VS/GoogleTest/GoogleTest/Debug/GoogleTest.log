@@ -1,0 +1,11 @@
+﻿Сборка начата 29.10.2017 12:26:19.
+     1>Проект "F:\OOP_Cpp\Lab1-VS\GoogleTest\GoogleTest\GoogleTest.vcxproj" в узле 3 (целевые объекты Build).
+     1>Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"F:\OOP_Cpp\Lab1-VS\Lab1Test\Debug\GoogleTest.lib" /NOLOGO "Debug\gtest-all.obj"
+         Debug\gtest_main.obj
+         GoogleTest.vcxproj -> F:\OOP_Cpp\Lab1-VS\Lab1Test\Debug\GoogleTest.lib
+     1>Сборка проекта "F:\OOP_Cpp\Lab1-VS\GoogleTest\GoogleTest\GoogleTest.vcxproj" завершена (целевые объекты Build).
+
+Сборка успешно завершена.
+
+Затраченное время: 00:00:00.45
