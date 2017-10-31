@@ -60,15 +60,15 @@ CMakeFiles/Lab1.dir/main.cpp.obj: CMakeFiles/Lab1.dir/flags.make
 CMakeFiles/Lab1.dir/main.cpp.obj: CMakeFiles/Lab1.dir/includes_CXX.rsp
 CMakeFiles/Lab1.dir/main.cpp.obj: ../main.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\OOP_Cpp\Lab1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Lab1.dir/main.cpp.obj"
-	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Lab1.dir\main.cpp.obj -c F:\OOP_Cpp\Lab1\main.cpp
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Lab1.dir\main.cpp.obj -c F:\OOP_Cpp\Lab1\main.cpp
 
 CMakeFiles/Lab1.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Lab1.dir/main.cpp.i"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\OOP_Cpp\Lab1\main.cpp > CMakeFiles\Lab1.dir\main.cpp.i
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\OOP_Cpp\Lab1\main.cpp > CMakeFiles\Lab1.dir\main.cpp.i
 
 CMakeFiles/Lab1.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Lab1.dir/main.cpp.s"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\OOP_Cpp\Lab1\main.cpp -o CMakeFiles\Lab1.dir\main.cpp.s
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\OOP_Cpp\Lab1\main.cpp -o CMakeFiles\Lab1.dir\main.cpp.s
 
 CMakeFiles/Lab1.dir/main.cpp.obj.requires:
 
@@ -81,44 +81,44 @@ CMakeFiles/Lab1.dir/main.cpp.obj.provides: CMakeFiles/Lab1.dir/main.cpp.obj.requ
 CMakeFiles/Lab1.dir/main.cpp.obj.provides.build: CMakeFiles/Lab1.dir/main.cpp.obj
 
 
-CMakeFiles/Lab1.dir/Tests/mytrit.cpp.obj: CMakeFiles/Lab1.dir/flags.make
-CMakeFiles/Lab1.dir/Tests/mytrit.cpp.obj: CMakeFiles/Lab1.dir/includes_CXX.rsp
-CMakeFiles/Lab1.dir/Tests/mytrit.cpp.obj: ../Tests/mytrit.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\OOP_Cpp\Lab1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Lab1.dir/Tests/mytrit.cpp.obj"
-	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Lab1.dir\Tests\mytrit.cpp.obj -c F:\OOP_Cpp\Lab1\Tests\mytrit.cpp
+CMakeFiles/Lab1.dir/mytrit.cpp.obj: CMakeFiles/Lab1.dir/flags.make
+CMakeFiles/Lab1.dir/mytrit.cpp.obj: CMakeFiles/Lab1.dir/includes_CXX.rsp
+CMakeFiles/Lab1.dir/mytrit.cpp.obj: ../mytrit.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\OOP_Cpp\Lab1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Lab1.dir/mytrit.cpp.obj"
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Lab1.dir\mytrit.cpp.obj -c F:\OOP_Cpp\Lab1\mytrit.cpp
 
-CMakeFiles/Lab1.dir/Tests/mytrit.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Lab1.dir/Tests/mytrit.cpp.i"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\OOP_Cpp\Lab1\Tests\mytrit.cpp > CMakeFiles\Lab1.dir\Tests\mytrit.cpp.i
+CMakeFiles/Lab1.dir/mytrit.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Lab1.dir/mytrit.cpp.i"
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\OOP_Cpp\Lab1\mytrit.cpp > CMakeFiles\Lab1.dir\mytrit.cpp.i
 
-CMakeFiles/Lab1.dir/Tests/mytrit.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Lab1.dir/Tests/mytrit.cpp.s"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\OOP_Cpp\Lab1\Tests\mytrit.cpp -o CMakeFiles\Lab1.dir\Tests\mytrit.cpp.s
+CMakeFiles/Lab1.dir/mytrit.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Lab1.dir/mytrit.cpp.s"
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\OOP_Cpp\Lab1\mytrit.cpp -o CMakeFiles\Lab1.dir\mytrit.cpp.s
 
-CMakeFiles/Lab1.dir/Tests/mytrit.cpp.obj.requires:
+CMakeFiles/Lab1.dir/mytrit.cpp.obj.requires:
 
-.PHONY : CMakeFiles/Lab1.dir/Tests/mytrit.cpp.obj.requires
+.PHONY : CMakeFiles/Lab1.dir/mytrit.cpp.obj.requires
 
-CMakeFiles/Lab1.dir/Tests/mytrit.cpp.obj.provides: CMakeFiles/Lab1.dir/Tests/mytrit.cpp.obj.requires
-	$(MAKE) -f CMakeFiles\Lab1.dir\build.make CMakeFiles/Lab1.dir/Tests/mytrit.cpp.obj.provides.build
-.PHONY : CMakeFiles/Lab1.dir/Tests/mytrit.cpp.obj.provides
+CMakeFiles/Lab1.dir/mytrit.cpp.obj.provides: CMakeFiles/Lab1.dir/mytrit.cpp.obj.requires
+	$(MAKE) -f CMakeFiles\Lab1.dir\build.make CMakeFiles/Lab1.dir/mytrit.cpp.obj.provides.build
+.PHONY : CMakeFiles/Lab1.dir/mytrit.cpp.obj.provides
 
-CMakeFiles/Lab1.dir/Tests/mytrit.cpp.obj.provides.build: CMakeFiles/Lab1.dir/Tests/mytrit.cpp.obj
+CMakeFiles/Lab1.dir/mytrit.cpp.obj.provides.build: CMakeFiles/Lab1.dir/mytrit.cpp.obj
 
 
 CMakeFiles/Lab1.dir/Tests/test.cpp.obj: CMakeFiles/Lab1.dir/flags.make
 CMakeFiles/Lab1.dir/Tests/test.cpp.obj: CMakeFiles/Lab1.dir/includes_CXX.rsp
 CMakeFiles/Lab1.dir/Tests/test.cpp.obj: ../Tests/test.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\OOP_Cpp\Lab1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Lab1.dir/Tests/test.cpp.obj"
-	C:\MinGW\bin\g++.exe  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Lab1.dir\Tests\test.cpp.obj -c F:\OOP_Cpp\Lab1\Tests\test.cpp
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Lab1.dir\Tests\test.cpp.obj -c F:\OOP_Cpp\Lab1\Tests\test.cpp
 
 CMakeFiles/Lab1.dir/Tests/test.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Lab1.dir/Tests/test.cpp.i"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\OOP_Cpp\Lab1\Tests\test.cpp > CMakeFiles\Lab1.dir\Tests\test.cpp.i
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\OOP_Cpp\Lab1\Tests\test.cpp > CMakeFiles\Lab1.dir\Tests\test.cpp.i
 
 CMakeFiles/Lab1.dir/Tests/test.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Lab1.dir/Tests/test.cpp.s"
-	C:\MinGW\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\OOP_Cpp\Lab1\Tests\test.cpp -o CMakeFiles\Lab1.dir\Tests\test.cpp.s
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\OOP_Cpp\Lab1\Tests\test.cpp -o CMakeFiles\Lab1.dir\Tests\test.cpp.s
 
 CMakeFiles/Lab1.dir/Tests/test.cpp.obj.requires:
 
@@ -134,14 +134,14 @@ CMakeFiles/Lab1.dir/Tests/test.cpp.obj.provides.build: CMakeFiles/Lab1.dir/Tests
 # Object files for target Lab1
 Lab1_OBJECTS = \
 "CMakeFiles/Lab1.dir/main.cpp.obj" \
-"CMakeFiles/Lab1.dir/Tests/mytrit.cpp.obj" \
+"CMakeFiles/Lab1.dir/mytrit.cpp.obj" \
 "CMakeFiles/Lab1.dir/Tests/test.cpp.obj"
 
 # External object files for target Lab1
 Lab1_EXTERNAL_OBJECTS =
 
 Lab1.exe: CMakeFiles/Lab1.dir/main.cpp.obj
-Lab1.exe: CMakeFiles/Lab1.dir/Tests/mytrit.cpp.obj
+Lab1.exe: CMakeFiles/Lab1.dir/mytrit.cpp.obj
 Lab1.exe: CMakeFiles/Lab1.dir/Tests/test.cpp.obj
 Lab1.exe: CMakeFiles/Lab1.dir/build.make
 Lab1.exe: lib/googletest-master/googlemock/gtest/libgtestd.a
@@ -159,7 +159,7 @@ CMakeFiles/Lab1.dir/build: Lab1.exe
 .PHONY : CMakeFiles/Lab1.dir/build
 
 CMakeFiles/Lab1.dir/requires: CMakeFiles/Lab1.dir/main.cpp.obj.requires
-CMakeFiles/Lab1.dir/requires: CMakeFiles/Lab1.dir/Tests/mytrit.cpp.obj.requires
+CMakeFiles/Lab1.dir/requires: CMakeFiles/Lab1.dir/mytrit.cpp.obj.requires
 CMakeFiles/Lab1.dir/requires: CMakeFiles/Lab1.dir/Tests/test.cpp.obj.requires
 
 .PHONY : CMakeFiles/Lab1.dir/requires

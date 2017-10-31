@@ -220,33 +220,6 @@ gtest_main/fast:
 	$(MAKE) -f lib\googletest-master\googlemock\gtest\CMakeFiles\gtest_main.dir\build.make lib/googletest-master/googlemock/gtest/CMakeFiles/gtest_main.dir/build
 .PHONY : gtest_main/fast
 
-Tests/mytrit.obj: Tests/mytrit.cpp.obj
-
-.PHONY : Tests/mytrit.obj
-
-# target to build an object file
-Tests/mytrit.cpp.obj:
-	$(MAKE) -f CMakeFiles\Lab1.dir\build.make CMakeFiles/Lab1.dir/Tests/mytrit.cpp.obj
-.PHONY : Tests/mytrit.cpp.obj
-
-Tests/mytrit.i: Tests/mytrit.cpp.i
-
-.PHONY : Tests/mytrit.i
-
-# target to preprocess a source file
-Tests/mytrit.cpp.i:
-	$(MAKE) -f CMakeFiles\Lab1.dir\build.make CMakeFiles/Lab1.dir/Tests/mytrit.cpp.i
-.PHONY : Tests/mytrit.cpp.i
-
-Tests/mytrit.s: Tests/mytrit.cpp.s
-
-.PHONY : Tests/mytrit.s
-
-# target to generate assembly for a file
-Tests/mytrit.cpp.s:
-	$(MAKE) -f CMakeFiles\Lab1.dir\build.make CMakeFiles/Lab1.dir/Tests/mytrit.cpp.s
-.PHONY : Tests/mytrit.cpp.s
-
 Tests/test.obj: Tests/test.cpp.obj
 
 .PHONY : Tests/test.obj
@@ -301,6 +274,33 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles\Lab1.dir\build.make CMakeFiles/Lab1.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+mytrit.obj: mytrit.cpp.obj
+
+.PHONY : mytrit.obj
+
+# target to build an object file
+mytrit.cpp.obj:
+	$(MAKE) -f CMakeFiles\Lab1.dir\build.make CMakeFiles/Lab1.dir/mytrit.cpp.obj
+.PHONY : mytrit.cpp.obj
+
+mytrit.i: mytrit.cpp.i
+
+.PHONY : mytrit.i
+
+# target to preprocess a source file
+mytrit.cpp.i:
+	$(MAKE) -f CMakeFiles\Lab1.dir\build.make CMakeFiles/Lab1.dir/mytrit.cpp.i
+.PHONY : mytrit.cpp.i
+
+mytrit.s: mytrit.cpp.s
+
+.PHONY : mytrit.s
+
+# target to generate assembly for a file
+mytrit.cpp.s:
+	$(MAKE) -f CMakeFiles\Lab1.dir\build.make CMakeFiles/Lab1.dir/mytrit.cpp.s
+.PHONY : mytrit.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -318,15 +318,15 @@ help:
 	@echo ... gmock
 	@echo ... gtest
 	@echo ... gtest_main
-	@echo ... Tests/mytrit.obj
-	@echo ... Tests/mytrit.i
-	@echo ... Tests/mytrit.s
 	@echo ... Tests/test.obj
 	@echo ... Tests/test.i
 	@echo ... Tests/test.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... mytrit.obj
+	@echo ... mytrit.i
+	@echo ... mytrit.s
 .PHONY : help
 
 
