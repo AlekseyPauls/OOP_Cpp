@@ -95,8 +95,8 @@ namespace gol {
         printf(" Input the next command: ");
     }
 
-    void Game::clear(char x, char y) {
-        field.clear_cage(x - 65, y - 48);
+    void Game::clear(int i, int j) {
+        field.clear_cage(i, j);
         system("cls");
         printf("\n Current step: %d \n", steps_counter);
         field.get_picture();
@@ -104,8 +104,8 @@ namespace gol {
         printf(" Input the next command: ");
     }
 
-    void Game::set(char x, char y) {
-        field.populate_cage(x - 65, y - 48);
+    void Game::set(int i, int j) {
+        field.populate_cage(i, j);
         system("cls");
         printf("\n Current step: %d \n", steps_counter);
         field.get_picture();
@@ -185,6 +185,18 @@ namespace gol {
                 break;
             }
             Sleep(delay);
+            if (steps_counter % 50 == 0) {
+                printf(" If you want to stop auto game press 'Esc'. If not press another key\n");
+                char c = getch();
+                if (c == 27) {
+                    system("cls");
+                    printf("\n Current step: %d \n", steps_counter);
+                    field.get_picture();
+                    printf("________________________\n\n");
+                    printf(" Input the next command: ");
+                    break;
+                }
+            }
         }
 
     }
@@ -229,10 +241,13 @@ namespace gol {
     void Game::exec_command(std::string command) {
         if (command.empty()) {
             system("cls");
-            printf("\n Error: unknown or incorrect command\n\n");
+            printf("\n Error: void command\n\n");
             printf("________________________\n\n");
             printf(" Input the next command: ");
+            return;
         }
+        // Command parsing
+        int error_flag = 0;
         std::string args[3];
         for (int i = 0; i < command.size(); i++) {
             if (command[i] == ' ') {
@@ -240,15 +255,38 @@ namespace gol {
                 if (args[0] == "set" || args[0] == "clear") {
                     args[1] = command[i + 1];
                     args[2] = command.substr(i + 2, 100);
-                } else if (args[0] == "step" || args[0] == "save" || args[0] == "load" || args[0] == "random_set" ||
-                        args[0] == "auto_game") {
+                    if (args[1][0] < 65 || args[1][0] > 90) {
+                        error_flag = 1;
+                    }
+                    for (int i = 0; i < args[2].size(); i++) {
+                        if (args[2][i] < 48 || args[2][i] > 57) {
+                            error_flag = 1;
+                            break;
+                        }
+                    }
+                } else if (args[0] == "step" || args[0] == "random_set" || args[0] == "auto_game") {
                     args[1] = command.substr(i + 1, 100);
-                } else {
-                    throw my_exception("Error: unknown or incorrect command");
+                    for (int i = 0; i < args[1].size(); i++) {
+                        if (args[1][i] < 48 || args[1][i] > 57) {
+                            error_flag = 1;
+                            break;
+                        }
+                    }
+                } else if (args[0] == "save" || args[0] == "load") {
+                    args[1] = command.substr(i + 1, 100);
                 }
                 break;
             }
         }
+        if (error_flag == 1) {
+            system("cls");
+            printf("\n Error: incorrect argument for command '%s'. Write 'help' to "
+                           "see descriptions of commands\n\n", args[0].c_str());
+            printf("________________________\n\n");
+            printf(" Input the next command: ");
+            return;
+        }
+        // Command choosing
         if (command == "step") {
             step();
         } else if (command == "help") {
@@ -260,27 +298,22 @@ namespace gol {
         } else if (command == "reset") {
             reset();
         } else if (args[0] == "step") {
-            for (int i = 0; i < args[1].size(); i++) {
-                if (args[1][i] < 48 || args[1][i] > 57) {
-                    throw my_exception("Error: unknown or incorrect command");
-                }
-            }
             step(stoi(args[1]));
         } else if (args[0] == "random_set") {
             random_set(stoi(args[1]));
         } else if (args[0] == "auto_game") {
             auto_game(stoi(args[1]));
         } else if (args[0] == "set") {
-            set(args[1][0], args[2][0]);
+            set(args[1][0] - 65, stoi(args[2]));
         } else if (args[0] == "clear") {
-            clear(args[1][0], args[2][0]);
+            clear(args[1][0] - 65, stoi(args[2]));
         } else if (args[0] == "save") {
             save(args[1]);
         } else if (args[0] == "load") {
             load(args[1]);
         } else {
             system("cls");
-            printf("\n Error: unknown or incorrect command \n");
+            printf("\n Error: unknown or incorrect command \n\n");
             printf("________________________\n\n");
             printf(" Input the next command: ");
         }

@@ -1,6 +1,8 @@
 #include "Field.h"
 #include "My_exception.h"
 #include <Windows.h>
+#include <conio.h>
+
 
 namespace gol {
     class Game {
@@ -13,8 +15,8 @@ namespace gol {
         void step(int N);
         void reset();
         void back();
-        void clear(char x, char y);
-        void set(char x, char y);
+        void clear(int i, int j);
+        void set(int i, int j);
         void random_set(int number);
         void save(std::string filename);
         void load(std::string filename);
