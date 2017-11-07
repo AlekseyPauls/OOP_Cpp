@@ -102,7 +102,7 @@ namespace trit_set {
 		return *this;
 	}
 
-	TritSet::reference& TritSet::reference::operator=(const reference &other) { //!!!
+	TritSet::reference& TritSet::reference::operator=(const reference &other) {
 		uint t = (*(this->ptr) >> 2 * this->index) & (~((uint)3));
 		if (this->tset->new_pos > this->tset->size && t == Unknown) {
 			return *this;
@@ -134,11 +134,11 @@ namespace trit_set {
 		return *this;
 	}
 
-	bool TritSet::reference::operator==(const TritSet::reference& one) {
+	bool TritSet::reference::operator==(const TritSet::reference& one)  const {
 		return (ptr == one.ptr && index == one.index);
 	}
 
-	bool TritSet::reference::operator==(const Trit& one) {
+	bool TritSet::reference::operator==(const Trit& one) const {
 		if (this->index != -1) {
 			uint t = (*(this->ptr) >> 2 * this->index) & ((uint)3);
 			return (t == one);
@@ -303,7 +303,7 @@ namespace trit_set {
 					if (t_A == 2 || t_B == 2) {
 						C.start[ptr_number] = C.start[ptr_number] | ((uint)2 << 2 * trit_pos);
 					}
-					else if (t_A == t_B == 1) {
+					else if (t_A == t_B && t_A == 1) {
 						C.start[ptr_number] = C.start[ptr_number] | ((uint)1 << 2 * trit_pos);
 					}
 				}
@@ -371,7 +371,7 @@ namespace trit_set {
 			size_t ptr_number = i * 2 / sizeof(uint) / 8;
 			size_t trit_pos = i - ptr_number * sizeof(uint)* 8 / 2;
 			uint t = (~A.start[ptr_number] >> 2 * trit_pos) & ((uint)3);
-			if (t != 3) { // 3 - инвертированный 0 (Unknown)
+			if (t != 3) { // 3 - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 0 (Unknown)
 				C.start[ptr_number] = C.start[ptr_number] & ~((uint)3 << 2 * trit_pos);
 				C.start[ptr_number] = C.start[ptr_number] | (t << 2 * trit_pos);
 			}

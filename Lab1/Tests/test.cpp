@@ -25,13 +25,56 @@ TEST(testTritSet, MemoryTest)
 TEST(testTritSet, OperationsTest) {
     trit_set::TritSet setA(1000);
     trit_set::TritSet setB(2000);
-    trit_set::TritSet setC = setA & setB;
+
+    setA[1] = trit_set::True;
+    setA[2] = trit_set::True;
+    setA[3] = trit_set::True;
+    setA[4] = trit_set::Unknown;
+    setA[5] = trit_set::Unknown;
+    setA[6] = trit_set::Unknown;
+    setA[7] = trit_set::False;
+    setA[8] = trit_set::False;
+    setA[9] = trit_set::False;
+
+    setB[1] = trit_set::True;
+    setB[2] = trit_set::Unknown;
+    setB[3] = trit_set::False;
+    setB[4] = trit_set::True;
+    setB[5] = trit_set::Unknown;
+    setB[6] = trit_set::False;
+    setB[7] = trit_set::True;
+    setB[8] = trit_set::Unknown;
+    setB[9] = trit_set::False;
+
+    trit_set::TritSet setC = setA | setB;
     EXPECT_EQ(setC.capacity(), setB.capacity());
+    EXPECT_EQ(setC[1], trit_set::True);
+    EXPECT_EQ(setC[2], trit_set::True);
+    EXPECT_EQ(setC[3], trit_set::True);
+    EXPECT_EQ(setC[4], trit_set::True);
+    EXPECT_EQ(setC[5], trit_set::Unknown);
+    EXPECT_EQ(setC[6], trit_set::Unknown);
+    EXPECT_EQ(setC[7], trit_set::True);
+    EXPECT_EQ(setC[8], trit_set::Unknown);
+    EXPECT_EQ(setC[9], trit_set::False);
     setC.trim(0);
-    setC = setA | setB;
+    setC = setA & setB;
     EXPECT_EQ(setC.capacity(), setB.capacity());
-    setC = ~setA;
-    EXPECT_EQ(setC.capacity(), setA.capacity());
+    EXPECT_EQ(setC[1], trit_set::True);
+    EXPECT_EQ(setC[2], trit_set::Unknown);
+    EXPECT_EQ(setC[3], trit_set::False);
+    EXPECT_EQ(setC[4], trit_set::Unknown);
+    EXPECT_EQ(setC[5], trit_set::Unknown); //
+    EXPECT_EQ(setC[6], trit_set::False);
+    EXPECT_EQ(setC[7], trit_set::False);
+    EXPECT_EQ(setC[8], trit_set::False);
+    EXPECT_EQ(setC[9], trit_set::False);
+    setC.trim(0);
+    setC = ~setB;
+    EXPECT_EQ(setC.capacity(), setB.capacity());
+    EXPECT_EQ(setC[1], trit_set::False);
+    EXPECT_EQ(setC[2], trit_set::Unknown);
+    EXPECT_EQ(setC[3], trit_set::True);
 }
 
 TEST(testTritSet, FunctionTest) {

@@ -27,8 +27,8 @@ namespace trit_set {
 			reference(uint *trit_ptr, int trit_index, TritSet * trit_set);
 			reference& operator=(Trit t);
 			reference& operator=(const reference& other);
-			bool operator==(const TritSet::reference& one);
-			bool operator==(const Trit& one);
+			bool operator==(const TritSet::reference& one) const;
+			bool operator==(const Trit& one) const;
 			friend std::ostream& operator<<(std::ostream& os, const reference& ref);
 		};
 		class TritIterator {
