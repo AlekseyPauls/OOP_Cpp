@@ -4,6 +4,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Lab2.dir/Field.cpp.obj"
   "CMakeFiles/Lab2.dir/Game.cpp.obj"
   "CMakeFiles/Lab2.dir/My_exception.cpp.obj"
+  "CMakeFiles/Lab2.dir/Tests/test.cpp.obj"
   "Lab2.pdb"
   "Lab2.exe"
   "Lab2.exe.manifest"

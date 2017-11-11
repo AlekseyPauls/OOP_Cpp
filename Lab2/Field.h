@@ -12,11 +12,13 @@ namespace gol {
         int height;
         int length;
         Cage **cages;
+        Cage **prev_step;
     public:
         Field(int height, int length);
         ~Field();
         void save_to_file(std::ofstream* fout);
         void load_from_file(std::ifstream* fin);
+        void step_back();
         void get_picture();
         int get_cages_number();
         void clear_cage(int i, int j);

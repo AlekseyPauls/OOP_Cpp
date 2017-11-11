@@ -12,10 +12,6 @@ namespace gol {
 
     void Game::step() {
         steps_counter++;
-        std::ofstream fout;
-        fout.open("prev_step.txt");
-        field.save_to_file(&fout);
-        fout.close();
         std::string res = field.next_step();
         if (res == "") {
             system("cls");
@@ -34,11 +30,8 @@ namespace gol {
 
     void Game::step(int N) {
         std::string res;
-        std::ofstream fout;
-        fout.open("prev_step.txt");
         for (int i = 0; i < N; i++) {
             steps_counter++;
-            field.save_to_file(&fout);
             res = field.next_step();
             if (res != "") {
                 break;
@@ -57,7 +50,6 @@ namespace gol {
             printf("________________________\n\n");
             printf(" Input the next command: ");
         }
-        fout.close();
     }
 
     void Game::reset() {
@@ -72,21 +64,9 @@ namespace gol {
 
     void Game::back() {
         if (steps_counter <= 0) {
-            system("cls");
-            printf("\n Error: there is no previous step\n\n");
-            printf("________________________\n\n");
-            printf(" Input the next command: ");
+            throw my_exception("Can't do step back");
         }
-        std::ifstream fin;
-        fin.open("prev_step.txt");
-        if (!fin.is_open()) {
-            system("cls");
-            printf("\n Error: can not open saved file\n\n");
-            printf("________________________\n\n");
-            printf(" Input the next command: ");
-        }
-        field.load_from_file(&fin);
-        fin.close();
+        field.step_back();
         steps_counter--;
         system("cls");
         printf("\n Current step: %d \n", steps_counter);
@@ -132,10 +112,7 @@ namespace gol {
         std::ofstream fout;
         fout.open(filename);
         if (!fout.is_open()) {
-            system("cls");
-            printf("\n Error: can not open file for save\n\n");
-            printf("________________________\n\n");
-            printf(" Input the next command: ");
+            throw my_invalid_argument("save");
         }
         field.save_to_file(&fout);
         fout.close();
@@ -149,10 +126,7 @@ namespace gol {
         std::ifstream fin;
         fin.open(filename);
         if (!fin.is_open()) {
-            system("cls");
-            printf("\n Error: can not open file for save\n\n");
-            printf("________________________\n\n");
-            printf(" Input the next command: ");
+            throw my_invalid_argument("save");
         }
         field.load_from_file(&fin);
         fin.close();
@@ -240,11 +214,7 @@ namespace gol {
 
     void Game::exec_command(std::string command) {
         if (command.empty()) {
-            system("cls");
-            printf("\n Error: void command\n\n");
-            printf("________________________\n\n");
-            printf(" Input the next command: ");
-            return;
+            throw my_command_error();
         }
         // Command parsing
         int error_flag = 0;
@@ -259,7 +229,7 @@ namespace gol {
                         error_flag = 1;
                     }
                     for (int i = 0; i < args[2].size(); i++) {
-                        if (args[2][i] < 48 || args[2][i] > 57) {
+                        if (args[2][i] < 48 || args[2][i] > 57 || i > 1) {
                             error_flag = 1;
                             break;
                         }
@@ -267,24 +237,21 @@ namespace gol {
                 } else if (args[0] == "step" || args[0] == "random_set" || args[0] == "auto_game") {
                     args[1] = command.substr(i + 1, 100);
                     for (int i = 0; i < args[1].size(); i++) {
-                        if (args[1][i] < 48 || args[1][i] > 57) {
+                        if (args[1][i] < 48 || args[1][i] > 57 || i > 9) {
                             error_flag = 1;
                             break;
                         }
                     }
                 } else if (args[0] == "save" || args[0] == "load") {
                     args[1] = command.substr(i + 1, 100);
+                } else if (args[0] == "help" || args[0] == "start" || args[0] == "back" || args[0] == "reset"){
+                    throw my_invalid_argument(args[0]);
                 }
                 break;
             }
         }
         if (error_flag == 1) {
-            system("cls");
-            printf("\n Error: incorrect argument for command '%s'. Write 'help' to "
-                           "see descriptions of commands\n\n", args[0].c_str());
-            printf("________________________\n\n");
-            printf(" Input the next command: ");
-            return;
+            throw my_invalid_argument(args[0]);
         }
         // Command choosing
         if (command == "step") {
@@ -298,24 +265,21 @@ namespace gol {
         } else if (command == "reset") {
             reset();
         } else if (args[0] == "step") {
-            step(stoi(args[1]));
+            step(atoi(args[1].c_str()));
         } else if (args[0] == "random_set") {
-            random_set(stoi(args[1]));
+            random_set(atoi(args[1].c_str()));
         } else if (args[0] == "auto_game") {
-            auto_game(stoi(args[1]));
+            auto_game(atoi(args[1].c_str()));
         } else if (args[0] == "set") {
-            set(args[1][0] - 65, stoi(args[2]));
+            set(args[1][0] - 65, atoi(args[2].c_str()));
         } else if (args[0] == "clear") {
-            clear(args[1][0] - 65, stoi(args[2]));
+            clear(args[1][0] - 65, atoi(args[2].c_str()));
         } else if (args[0] == "save") {
             save(args[1]);
         } else if (args[0] == "load") {
             load(args[1]);
         } else {
-            system("cls");
-            printf("\n Error: unknown or incorrect command \n\n");
-            printf("________________________\n\n");
-            printf(" Input the next command: ");
+            throw my_command_error(command);
         }
     }
 }

@@ -8,16 +8,21 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "F:/OOP_Cpp/Lab2/Field.cpp" "F:/OOP_Cpp/Lab2/cmake-build-debug/CMakeFiles/Lab2.dir/Field.cpp.obj"
   "F:/OOP_Cpp/Lab2/Game.cpp" "F:/OOP_Cpp/Lab2/cmake-build-debug/CMakeFiles/Lab2.dir/Game.cpp.obj"
   "F:/OOP_Cpp/Lab2/My_exception.cpp" "F:/OOP_Cpp/Lab2/cmake-build-debug/CMakeFiles/Lab2.dir/My_exception.cpp.obj"
+  "F:/OOP_Cpp/Lab2/Tests/test.cpp" "F:/OOP_Cpp/Lab2/cmake-build-debug/CMakeFiles/Lab2.dir/Tests/test.cpp.obj"
   "F:/OOP_Cpp/Lab2/main.cpp" "F:/OOP_Cpp/Lab2/cmake-build-debug/CMakeFiles/Lab2.dir/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
+  "../lib/googletest-master/googletest/include"
+  "../lib/googletest-master/googlemock/include"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
+  "F:/OOP_Cpp/Lab2/cmake-build-debug/lib/googletest-master/googlemock/gtest/CMakeFiles/gtest.dir/DependInfo.cmake"
+  "F:/OOP_Cpp/Lab2/cmake-build-debug/lib/googletest-master/googlemock/gtest/CMakeFiles/gtest_main.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

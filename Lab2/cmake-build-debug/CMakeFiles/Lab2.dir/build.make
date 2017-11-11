@@ -57,6 +57,7 @@ include CMakeFiles/Lab2.dir/progress.make
 include CMakeFiles/Lab2.dir/flags.make
 
 CMakeFiles/Lab2.dir/main.cpp.obj: CMakeFiles/Lab2.dir/flags.make
+CMakeFiles/Lab2.dir/main.cpp.obj: CMakeFiles/Lab2.dir/includes_CXX.rsp
 CMakeFiles/Lab2.dir/main.cpp.obj: ../main.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\OOP_Cpp\Lab2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Lab2.dir/main.cpp.obj"
 	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Lab2.dir\main.cpp.obj -c F:\OOP_Cpp\Lab2\main.cpp
@@ -81,6 +82,7 @@ CMakeFiles/Lab2.dir/main.cpp.obj.provides.build: CMakeFiles/Lab2.dir/main.cpp.ob
 
 
 CMakeFiles/Lab2.dir/Cage.cpp.obj: CMakeFiles/Lab2.dir/flags.make
+CMakeFiles/Lab2.dir/Cage.cpp.obj: CMakeFiles/Lab2.dir/includes_CXX.rsp
 CMakeFiles/Lab2.dir/Cage.cpp.obj: ../Cage.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\OOP_Cpp\Lab2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Lab2.dir/Cage.cpp.obj"
 	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Lab2.dir\Cage.cpp.obj -c F:\OOP_Cpp\Lab2\Cage.cpp
@@ -105,6 +107,7 @@ CMakeFiles/Lab2.dir/Cage.cpp.obj.provides.build: CMakeFiles/Lab2.dir/Cage.cpp.ob
 
 
 CMakeFiles/Lab2.dir/Field.cpp.obj: CMakeFiles/Lab2.dir/flags.make
+CMakeFiles/Lab2.dir/Field.cpp.obj: CMakeFiles/Lab2.dir/includes_CXX.rsp
 CMakeFiles/Lab2.dir/Field.cpp.obj: ../Field.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\OOP_Cpp\Lab2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Lab2.dir/Field.cpp.obj"
 	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Lab2.dir\Field.cpp.obj -c F:\OOP_Cpp\Lab2\Field.cpp
@@ -129,6 +132,7 @@ CMakeFiles/Lab2.dir/Field.cpp.obj.provides.build: CMakeFiles/Lab2.dir/Field.cpp.
 
 
 CMakeFiles/Lab2.dir/Game.cpp.obj: CMakeFiles/Lab2.dir/flags.make
+CMakeFiles/Lab2.dir/Game.cpp.obj: CMakeFiles/Lab2.dir/includes_CXX.rsp
 CMakeFiles/Lab2.dir/Game.cpp.obj: ../Game.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\OOP_Cpp\Lab2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Lab2.dir/Game.cpp.obj"
 	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Lab2.dir\Game.cpp.obj -c F:\OOP_Cpp\Lab2\Game.cpp
@@ -153,6 +157,7 @@ CMakeFiles/Lab2.dir/Game.cpp.obj.provides.build: CMakeFiles/Lab2.dir/Game.cpp.ob
 
 
 CMakeFiles/Lab2.dir/My_exception.cpp.obj: CMakeFiles/Lab2.dir/flags.make
+CMakeFiles/Lab2.dir/My_exception.cpp.obj: CMakeFiles/Lab2.dir/includes_CXX.rsp
 CMakeFiles/Lab2.dir/My_exception.cpp.obj: ../My_exception.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\OOP_Cpp\Lab2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Lab2.dir/My_exception.cpp.obj"
 	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Lab2.dir\My_exception.cpp.obj -c F:\OOP_Cpp\Lab2\My_exception.cpp
@@ -176,13 +181,39 @@ CMakeFiles/Lab2.dir/My_exception.cpp.obj.provides: CMakeFiles/Lab2.dir/My_except
 CMakeFiles/Lab2.dir/My_exception.cpp.obj.provides.build: CMakeFiles/Lab2.dir/My_exception.cpp.obj
 
 
+CMakeFiles/Lab2.dir/Tests/test.cpp.obj: CMakeFiles/Lab2.dir/flags.make
+CMakeFiles/Lab2.dir/Tests/test.cpp.obj: CMakeFiles/Lab2.dir/includes_CXX.rsp
+CMakeFiles/Lab2.dir/Tests/test.cpp.obj: ../Tests/test.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\OOP_Cpp\Lab2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Lab2.dir/Tests/test.cpp.obj"
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Lab2.dir\Tests\test.cpp.obj -c F:\OOP_Cpp\Lab2\Tests\test.cpp
+
+CMakeFiles/Lab2.dir/Tests/test.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Lab2.dir/Tests/test.cpp.i"
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\OOP_Cpp\Lab2\Tests\test.cpp > CMakeFiles\Lab2.dir\Tests\test.cpp.i
+
+CMakeFiles/Lab2.dir/Tests/test.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Lab2.dir/Tests/test.cpp.s"
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\OOP_Cpp\Lab2\Tests\test.cpp -o CMakeFiles\Lab2.dir\Tests\test.cpp.s
+
+CMakeFiles/Lab2.dir/Tests/test.cpp.obj.requires:
+
+.PHONY : CMakeFiles/Lab2.dir/Tests/test.cpp.obj.requires
+
+CMakeFiles/Lab2.dir/Tests/test.cpp.obj.provides: CMakeFiles/Lab2.dir/Tests/test.cpp.obj.requires
+	$(MAKE) -f CMakeFiles\Lab2.dir\build.make CMakeFiles/Lab2.dir/Tests/test.cpp.obj.provides.build
+.PHONY : CMakeFiles/Lab2.dir/Tests/test.cpp.obj.provides
+
+CMakeFiles/Lab2.dir/Tests/test.cpp.obj.provides.build: CMakeFiles/Lab2.dir/Tests/test.cpp.obj
+
+
 # Object files for target Lab2
 Lab2_OBJECTS = \
 "CMakeFiles/Lab2.dir/main.cpp.obj" \
 "CMakeFiles/Lab2.dir/Cage.cpp.obj" \
 "CMakeFiles/Lab2.dir/Field.cpp.obj" \
 "CMakeFiles/Lab2.dir/Game.cpp.obj" \
-"CMakeFiles/Lab2.dir/My_exception.cpp.obj"
+"CMakeFiles/Lab2.dir/My_exception.cpp.obj" \
+"CMakeFiles/Lab2.dir/Tests/test.cpp.obj"
 
 # External object files for target Lab2
 Lab2_EXTERNAL_OBJECTS =
@@ -192,11 +223,15 @@ Lab2.exe: CMakeFiles/Lab2.dir/Cage.cpp.obj
 Lab2.exe: CMakeFiles/Lab2.dir/Field.cpp.obj
 Lab2.exe: CMakeFiles/Lab2.dir/Game.cpp.obj
 Lab2.exe: CMakeFiles/Lab2.dir/My_exception.cpp.obj
+Lab2.exe: CMakeFiles/Lab2.dir/Tests/test.cpp.obj
 Lab2.exe: CMakeFiles/Lab2.dir/build.make
+Lab2.exe: lib/googletest-master/googlemock/gtest/libgtestd.a
+Lab2.exe: lib/googletest-master/googlemock/gtest/libgtest_maind.a
+Lab2.exe: lib/googletest-master/googlemock/gtest/libgtestd.a
 Lab2.exe: CMakeFiles/Lab2.dir/linklibs.rsp
 Lab2.exe: CMakeFiles/Lab2.dir/objects1.rsp
 Lab2.exe: CMakeFiles/Lab2.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=F:\OOP_Cpp\Lab2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable Lab2.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=F:\OOP_Cpp\Lab2\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable Lab2.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Lab2.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -209,6 +244,7 @@ CMakeFiles/Lab2.dir/requires: CMakeFiles/Lab2.dir/Cage.cpp.obj.requires
 CMakeFiles/Lab2.dir/requires: CMakeFiles/Lab2.dir/Field.cpp.obj.requires
 CMakeFiles/Lab2.dir/requires: CMakeFiles/Lab2.dir/Game.cpp.obj.requires
 CMakeFiles/Lab2.dir/requires: CMakeFiles/Lab2.dir/My_exception.cpp.obj.requires
+CMakeFiles/Lab2.dir/requires: CMakeFiles/Lab2.dir/Tests/test.cpp.obj.requires
 
 .PHONY : CMakeFiles/Lab2.dir/requires
 
