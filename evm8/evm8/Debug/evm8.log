@@ -1,0 +1,7 @@
+﻿  main.cpp
+c:\users\л\documents\visual studio 2015\projects\evm8\evm8\main.cpp(20): warning C4305: *=: усечение из "double" к "float"
+c:\users\л\documents\visual studio 2015\projects\evm8\evm8\main.cpp(34): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+c:\users\л\documents\visual studio 2015\projects\evm8\evm8\main.cpp(45): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+c:\users\л\documents\visual studio 2015\projects\evm8\evm8\main.cpp(64): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+  evm8.vcxproj -> C:\Users\л\documents\visual studio 2015\Projects\evm8\Debug\evm8.exe
+  evm8.vcxproj -> C:\Users\л\documents\visual studio 2015\Projects\evm8\Debug\evm8.pdb (Full PDB)
