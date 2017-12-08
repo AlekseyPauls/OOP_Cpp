@@ -1,0 +1,46 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+F:/OOP_Cpp/Lab3/main.cpp
+iostream
+-
+fstream
+-
+workflow.h
+F:/OOP_Cpp/Lab3/workflow.h
+
+F:/OOP_Cpp/Lab3/my_exeption.cpp
+my_exeption.h
+F:/OOP_Cpp/Lab3/my_exeption.h
+
+F:/OOP_Cpp/Lab3/my_exeption.h
+cstdlib
+-
+string
+-
+iostream
+-
+
+F:/OOP_Cpp/Lab3/workflow.cpp
+workflow.h
+F:/OOP_Cpp/Lab3/workflow.h
+
+F:/OOP_Cpp/Lab3/workflow.h
+map
+-
+vector
+-
+iostream
+-
+fstream
+-
+cstdlib
+-
+my_exeption.h
+F:/OOP_Cpp/Lab3/my_exeption.h
+
