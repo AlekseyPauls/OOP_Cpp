@@ -1,4 +1,4 @@
-#include "my_exeption.h"
+#include "my_exception.h"
 
 namespace wf {
     my_exception::my_exception() : message("") {}

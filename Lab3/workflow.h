@@ -3,7 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
-#include "my_exeption.h"
+#include "my_exception.h"
 
 namespace wf {
 
@@ -35,8 +35,6 @@ namespace wf {
         std::map<int, std::string> ids;
     public:
         Workflow(std::ifstream *conf);
-
-        Workflow(std::ifstream *conf, std::ifstream *fin, std::ifstream *fout);
 
         ~Workflow();
 

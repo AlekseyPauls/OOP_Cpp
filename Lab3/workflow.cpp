@@ -21,26 +21,6 @@ namespace wf {
         parser.parseQueue(&queue);
     }
 
-    // In work
-    Workflow::Workflow(std::ifstream *conf, std::ifstream *fin, std::ifstream *fout) {
-        Readfile * readfile = new Readfile();
-        Writefile * writefile = new Writefile();
-        Grep * grep = new Grep();
-        Sort * sort = new Sort();
-        Replace * replace = new Replace();
-        Dump * dump = new Dump();
-        commands = {{"readfile",  readfile},
-                    {"writefile", writefile},
-                    {"grep",      grep},
-                    {"sort",      sort},
-                    {"replace",   replace},
-                    {"dump",      dump}
-        };
-        cfgParser parser(conf);
-        parser.parseBlocks(&commands, &ids);
-        parser.parseQueue(&queue);
-    }
-
     Workflow::~Workflow() {
         for (auto it: commands) {
             delete it.second;

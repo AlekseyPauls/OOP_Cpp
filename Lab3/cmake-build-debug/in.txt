@@ -1,4 +1,3 @@
-a f a g a f
-aaa f e r aas
-aaa dsafasdf
-fdadsfdsaf aaa f
+3
+2
+1

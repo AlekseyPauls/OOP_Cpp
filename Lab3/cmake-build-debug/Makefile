@@ -122,6 +122,33 @@ Lab3/fast:
 	$(MAKE) -f CMakeFiles\Lab3.dir\build.make CMakeFiles/Lab3.dir/build
 .PHONY : Lab3/fast
 
+Tests/test.obj: Tests/test.cpp.obj
+
+.PHONY : Tests/test.obj
+
+# target to build an object file
+Tests/test.cpp.obj:
+	$(MAKE) -f CMakeFiles\Lab3.dir\build.make CMakeFiles/Lab3.dir/Tests/test.cpp.obj
+.PHONY : Tests/test.cpp.obj
+
+Tests/test.i: Tests/test.cpp.i
+
+.PHONY : Tests/test.i
+
+# target to preprocess a source file
+Tests/test.cpp.i:
+	$(MAKE) -f CMakeFiles\Lab3.dir\build.make CMakeFiles/Lab3.dir/Tests/test.cpp.i
+.PHONY : Tests/test.cpp.i
+
+Tests/test.s: Tests/test.cpp.s
+
+.PHONY : Tests/test.s
+
+# target to generate assembly for a file
+Tests/test.cpp.s:
+	$(MAKE) -f CMakeFiles\Lab3.dir\build.make CMakeFiles/Lab3.dir/Tests/test.cpp.s
+.PHONY : Tests/test.cpp.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -149,32 +176,59 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles\Lab3.dir\build.make CMakeFiles/Lab3.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-my_exeption.obj: my_exeption.cpp.obj
+my_exception.obj: my_exception.cpp.obj
 
-.PHONY : my_exeption.obj
+.PHONY : my_exception.obj
 
 # target to build an object file
-my_exeption.cpp.obj:
-	$(MAKE) -f CMakeFiles\Lab3.dir\build.make CMakeFiles/Lab3.dir/my_exeption.cpp.obj
-.PHONY : my_exeption.cpp.obj
+my_exception.cpp.obj:
+	$(MAKE) -f CMakeFiles\Lab3.dir\build.make CMakeFiles/Lab3.dir/my_exception.cpp.obj
+.PHONY : my_exception.cpp.obj
 
-my_exeption.i: my_exeption.cpp.i
+my_exception.i: my_exception.cpp.i
 
-.PHONY : my_exeption.i
+.PHONY : my_exception.i
 
 # target to preprocess a source file
-my_exeption.cpp.i:
-	$(MAKE) -f CMakeFiles\Lab3.dir\build.make CMakeFiles/Lab3.dir/my_exeption.cpp.i
-.PHONY : my_exeption.cpp.i
+my_exception.cpp.i:
+	$(MAKE) -f CMakeFiles\Lab3.dir\build.make CMakeFiles/Lab3.dir/my_exception.cpp.i
+.PHONY : my_exception.cpp.i
 
-my_exeption.s: my_exeption.cpp.s
+my_exception.s: my_exception.cpp.s
 
-.PHONY : my_exeption.s
+.PHONY : my_exception.s
 
 # target to generate assembly for a file
-my_exeption.cpp.s:
-	$(MAKE) -f CMakeFiles\Lab3.dir\build.make CMakeFiles/Lab3.dir/my_exeption.cpp.s
-.PHONY : my_exeption.cpp.s
+my_exception.cpp.s:
+	$(MAKE) -f CMakeFiles\Lab3.dir\build.make CMakeFiles/Lab3.dir/my_exception.cpp.s
+.PHONY : my_exception.cpp.s
+
+shared_pointer.obj: shared_pointer.cpp.obj
+
+.PHONY : shared_pointer.obj
+
+# target to build an object file
+shared_pointer.cpp.obj:
+	$(MAKE) -f CMakeFiles\Lab3.dir\build.make CMakeFiles/Lab3.dir/shared_pointer.cpp.obj
+.PHONY : shared_pointer.cpp.obj
+
+shared_pointer.i: shared_pointer.cpp.i
+
+.PHONY : shared_pointer.i
+
+# target to preprocess a source file
+shared_pointer.cpp.i:
+	$(MAKE) -f CMakeFiles\Lab3.dir\build.make CMakeFiles/Lab3.dir/shared_pointer.cpp.i
+.PHONY : shared_pointer.cpp.i
+
+shared_pointer.s: shared_pointer.cpp.s
+
+.PHONY : shared_pointer.s
+
+# target to generate assembly for a file
+shared_pointer.cpp.s:
+	$(MAKE) -f CMakeFiles\Lab3.dir\build.make CMakeFiles/Lab3.dir/shared_pointer.cpp.s
+.PHONY : shared_pointer.cpp.s
 
 workflow.obj: workflow.cpp.obj
 
@@ -212,12 +266,18 @@ help:
 	@echo ... rebuild_cache
 	@echo ... Lab3
 	@echo ... edit_cache
+	@echo ... Tests/test.obj
+	@echo ... Tests/test.i
+	@echo ... Tests/test.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
-	@echo ... my_exeption.obj
-	@echo ... my_exeption.i
-	@echo ... my_exeption.s
+	@echo ... my_exception.obj
+	@echo ... my_exception.i
+	@echo ... my_exception.s
+	@echo ... shared_pointer.obj
+	@echo ... shared_pointer.i
+	@echo ... shared_pointer.s
 	@echo ... workflow.obj
 	@echo ... workflow.i
 	@echo ... workflow.s

@@ -104,47 +104,99 @@ CMakeFiles/Lab3.dir/workflow.cpp.obj.provides: CMakeFiles/Lab3.dir/workflow.cpp.
 CMakeFiles/Lab3.dir/workflow.cpp.obj.provides.build: CMakeFiles/Lab3.dir/workflow.cpp.obj
 
 
-CMakeFiles/Lab3.dir/my_exeption.cpp.obj: CMakeFiles/Lab3.dir/flags.make
-CMakeFiles/Lab3.dir/my_exeption.cpp.obj: ../my_exeption.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\OOP_Cpp\Lab3\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Lab3.dir/my_exeption.cpp.obj"
-	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Lab3.dir\my_exeption.cpp.obj -c F:\OOP_Cpp\Lab3\my_exeption.cpp
+CMakeFiles/Lab3.dir/my_exception.cpp.obj: CMakeFiles/Lab3.dir/flags.make
+CMakeFiles/Lab3.dir/my_exception.cpp.obj: ../my_exception.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\OOP_Cpp\Lab3\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Lab3.dir/my_exception.cpp.obj"
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Lab3.dir\my_exception.cpp.obj -c F:\OOP_Cpp\Lab3\my_exception.cpp
 
-CMakeFiles/Lab3.dir/my_exeption.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Lab3.dir/my_exeption.cpp.i"
-	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\OOP_Cpp\Lab3\my_exeption.cpp > CMakeFiles\Lab3.dir\my_exeption.cpp.i
+CMakeFiles/Lab3.dir/my_exception.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Lab3.dir/my_exception.cpp.i"
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\OOP_Cpp\Lab3\my_exception.cpp > CMakeFiles\Lab3.dir\my_exception.cpp.i
 
-CMakeFiles/Lab3.dir/my_exeption.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Lab3.dir/my_exeption.cpp.s"
-	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\OOP_Cpp\Lab3\my_exeption.cpp -o CMakeFiles\Lab3.dir\my_exeption.cpp.s
+CMakeFiles/Lab3.dir/my_exception.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Lab3.dir/my_exception.cpp.s"
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\OOP_Cpp\Lab3\my_exception.cpp -o CMakeFiles\Lab3.dir\my_exception.cpp.s
 
-CMakeFiles/Lab3.dir/my_exeption.cpp.obj.requires:
+CMakeFiles/Lab3.dir/my_exception.cpp.obj.requires:
 
-.PHONY : CMakeFiles/Lab3.dir/my_exeption.cpp.obj.requires
+.PHONY : CMakeFiles/Lab3.dir/my_exception.cpp.obj.requires
 
-CMakeFiles/Lab3.dir/my_exeption.cpp.obj.provides: CMakeFiles/Lab3.dir/my_exeption.cpp.obj.requires
-	$(MAKE) -f CMakeFiles\Lab3.dir\build.make CMakeFiles/Lab3.dir/my_exeption.cpp.obj.provides.build
-.PHONY : CMakeFiles/Lab3.dir/my_exeption.cpp.obj.provides
+CMakeFiles/Lab3.dir/my_exception.cpp.obj.provides: CMakeFiles/Lab3.dir/my_exception.cpp.obj.requires
+	$(MAKE) -f CMakeFiles\Lab3.dir\build.make CMakeFiles/Lab3.dir/my_exception.cpp.obj.provides.build
+.PHONY : CMakeFiles/Lab3.dir/my_exception.cpp.obj.provides
 
-CMakeFiles/Lab3.dir/my_exeption.cpp.obj.provides.build: CMakeFiles/Lab3.dir/my_exeption.cpp.obj
+CMakeFiles/Lab3.dir/my_exception.cpp.obj.provides.build: CMakeFiles/Lab3.dir/my_exception.cpp.obj
+
+
+CMakeFiles/Lab3.dir/shared_pointer.cpp.obj: CMakeFiles/Lab3.dir/flags.make
+CMakeFiles/Lab3.dir/shared_pointer.cpp.obj: ../shared_pointer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\OOP_Cpp\Lab3\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Lab3.dir/shared_pointer.cpp.obj"
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Lab3.dir\shared_pointer.cpp.obj -c F:\OOP_Cpp\Lab3\shared_pointer.cpp
+
+CMakeFiles/Lab3.dir/shared_pointer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Lab3.dir/shared_pointer.cpp.i"
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\OOP_Cpp\Lab3\shared_pointer.cpp > CMakeFiles\Lab3.dir\shared_pointer.cpp.i
+
+CMakeFiles/Lab3.dir/shared_pointer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Lab3.dir/shared_pointer.cpp.s"
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\OOP_Cpp\Lab3\shared_pointer.cpp -o CMakeFiles\Lab3.dir\shared_pointer.cpp.s
+
+CMakeFiles/Lab3.dir/shared_pointer.cpp.obj.requires:
+
+.PHONY : CMakeFiles/Lab3.dir/shared_pointer.cpp.obj.requires
+
+CMakeFiles/Lab3.dir/shared_pointer.cpp.obj.provides: CMakeFiles/Lab3.dir/shared_pointer.cpp.obj.requires
+	$(MAKE) -f CMakeFiles\Lab3.dir\build.make CMakeFiles/Lab3.dir/shared_pointer.cpp.obj.provides.build
+.PHONY : CMakeFiles/Lab3.dir/shared_pointer.cpp.obj.provides
+
+CMakeFiles/Lab3.dir/shared_pointer.cpp.obj.provides.build: CMakeFiles/Lab3.dir/shared_pointer.cpp.obj
+
+
+CMakeFiles/Lab3.dir/Tests/test.cpp.obj: CMakeFiles/Lab3.dir/flags.make
+CMakeFiles/Lab3.dir/Tests/test.cpp.obj: ../Tests/test.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=F:\OOP_Cpp\Lab3\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Lab3.dir/Tests/test.cpp.obj"
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Lab3.dir\Tests\test.cpp.obj -c F:\OOP_Cpp\Lab3\Tests\test.cpp
+
+CMakeFiles/Lab3.dir/Tests/test.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Lab3.dir/Tests/test.cpp.i"
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E F:\OOP_Cpp\Lab3\Tests\test.cpp > CMakeFiles\Lab3.dir\Tests\test.cpp.i
+
+CMakeFiles/Lab3.dir/Tests/test.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Lab3.dir/Tests/test.cpp.s"
+	C:\PROGRA~2\MINGW-~1\I686-7~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S F:\OOP_Cpp\Lab3\Tests\test.cpp -o CMakeFiles\Lab3.dir\Tests\test.cpp.s
+
+CMakeFiles/Lab3.dir/Tests/test.cpp.obj.requires:
+
+.PHONY : CMakeFiles/Lab3.dir/Tests/test.cpp.obj.requires
+
+CMakeFiles/Lab3.dir/Tests/test.cpp.obj.provides: CMakeFiles/Lab3.dir/Tests/test.cpp.obj.requires
+	$(MAKE) -f CMakeFiles\Lab3.dir\build.make CMakeFiles/Lab3.dir/Tests/test.cpp.obj.provides.build
+.PHONY : CMakeFiles/Lab3.dir/Tests/test.cpp.obj.provides
+
+CMakeFiles/Lab3.dir/Tests/test.cpp.obj.provides.build: CMakeFiles/Lab3.dir/Tests/test.cpp.obj
 
 
 # Object files for target Lab3
 Lab3_OBJECTS = \
 "CMakeFiles/Lab3.dir/main.cpp.obj" \
 "CMakeFiles/Lab3.dir/workflow.cpp.obj" \
-"CMakeFiles/Lab3.dir/my_exeption.cpp.obj"
+"CMakeFiles/Lab3.dir/my_exception.cpp.obj" \
+"CMakeFiles/Lab3.dir/shared_pointer.cpp.obj" \
+"CMakeFiles/Lab3.dir/Tests/test.cpp.obj"
 
 # External object files for target Lab3
 Lab3_EXTERNAL_OBJECTS =
 
 Lab3.exe: CMakeFiles/Lab3.dir/main.cpp.obj
 Lab3.exe: CMakeFiles/Lab3.dir/workflow.cpp.obj
-Lab3.exe: CMakeFiles/Lab3.dir/my_exeption.cpp.obj
+Lab3.exe: CMakeFiles/Lab3.dir/my_exception.cpp.obj
+Lab3.exe: CMakeFiles/Lab3.dir/shared_pointer.cpp.obj
+Lab3.exe: CMakeFiles/Lab3.dir/Tests/test.cpp.obj
 Lab3.exe: CMakeFiles/Lab3.dir/build.make
 Lab3.exe: CMakeFiles/Lab3.dir/linklibs.rsp
 Lab3.exe: CMakeFiles/Lab3.dir/objects1.rsp
 Lab3.exe: CMakeFiles/Lab3.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=F:\OOP_Cpp\Lab3\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable Lab3.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=F:\OOP_Cpp\Lab3\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable Lab3.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Lab3.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -154,7 +206,9 @@ CMakeFiles/Lab3.dir/build: Lab3.exe
 
 CMakeFiles/Lab3.dir/requires: CMakeFiles/Lab3.dir/main.cpp.obj.requires
 CMakeFiles/Lab3.dir/requires: CMakeFiles/Lab3.dir/workflow.cpp.obj.requires
-CMakeFiles/Lab3.dir/requires: CMakeFiles/Lab3.dir/my_exeption.cpp.obj.requires
+CMakeFiles/Lab3.dir/requires: CMakeFiles/Lab3.dir/my_exception.cpp.obj.requires
+CMakeFiles/Lab3.dir/requires: CMakeFiles/Lab3.dir/shared_pointer.cpp.obj.requires
+CMakeFiles/Lab3.dir/requires: CMakeFiles/Lab3.dir/Tests/test.cpp.obj.requires
 
 .PHONY : CMakeFiles/Lab3.dir/requires
 

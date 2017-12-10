@@ -1,0 +1,13 @@
+desc
+1 = readfile in.txt
+2 = sort
+3 = dump dump1.txt
+4 = replace 1 5
+5 = dump dump2.txt
+6 = grep 2
+7 = dump dump3.txt
+8 = writefile out1.txt
+9 = readfile dump2.txt
+10 = writefile out2.txt
+csed
+1 -> 2 -> 3 -> 4 -> 5 -> 6 -> 7 -> 8 -> 9 -> 2 -> 10

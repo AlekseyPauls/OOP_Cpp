@@ -80,13 +80,22 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="F:/OOP_Cpp/Lab3/Tests/test.cpp">
+			<Option target="Lab3"/>
+		</Unit>
 		<Unit filename="F:/OOP_Cpp/Lab3/main.cpp">
 			<Option target="Lab3"/>
 		</Unit>
-		<Unit filename="F:/OOP_Cpp/Lab3/my_exeption.cpp">
+		<Unit filename="F:/OOP_Cpp/Lab3/my_exception.cpp">
 			<Option target="Lab3"/>
 		</Unit>
-		<Unit filename="F:/OOP_Cpp/Lab3/my_exeption.h">
+		<Unit filename="F:/OOP_Cpp/Lab3/my_exception.h">
+			<Option target="Lab3"/>
+		</Unit>
+		<Unit filename="F:/OOP_Cpp/Lab3/shared_pointer.cpp">
+			<Option target="Lab3"/>
+		</Unit>
+		<Unit filename="F:/OOP_Cpp/Lab3/shared_pointer.h">
 			<Option target="Lab3"/>
 		</Unit>
 		<Unit filename="F:/OOP_Cpp/Lab3/workflow.cpp">
