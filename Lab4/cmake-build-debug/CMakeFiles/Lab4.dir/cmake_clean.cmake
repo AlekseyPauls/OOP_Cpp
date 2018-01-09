@@ -1,7 +1,5 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Lab4.dir/main.cpp.obj"
-  "CMakeFiles/Lab4.dir/tuple_print.cpp.obj"
-  "CMakeFiles/Lab4.dir/csvparser.cpp.obj"
   "CMakeFiles/Lab4.dir/parser_exceptions.cpp.obj"
   "Lab4.pdb"
   "Lab4.exe"

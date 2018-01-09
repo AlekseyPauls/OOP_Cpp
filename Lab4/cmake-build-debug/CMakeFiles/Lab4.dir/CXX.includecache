@@ -6,43 +6,31 @@
 
 #IncludeRegexTransform: 
 
-F:/OOP_Cpp/Lab4/csvparser.cpp
-csvparser.h
-F:/OOP_Cpp/Lab4/csvparser.h
-
-F:/OOP_Cpp/Lab4/csvparser.h
+C:/OOP_Cpp/Lab4/csvparser.h
 fstream
 -
 iostream
+-
+cstdlib
 -
 vector
 -
 tuple
 -
-tuple_print.h
-F:/OOP_Cpp/Lab4/tuple_print.h
+iads.h
+-
 parser_exceptions.h
-F:/OOP_Cpp/Lab4/parser_exceptions.h
+C:/OOP_Cpp/Lab4/parser_exceptions.h
 
-F:/OOP_Cpp/Lab4/main.cpp
+C:/OOP_Cpp/Lab4/main.cpp
 iostream
 -
 csvparser.h
-F:/OOP_Cpp/Lab4/csvparser.h
+C:/OOP_Cpp/Lab4/csvparser.h
 
-F:/OOP_Cpp/Lab4/parser_exceptions.cpp
+C:/OOP_Cpp/Lab4/parser_exceptions.cpp
 parser_exceptions.h
-F:/OOP_Cpp/Lab4/parser_exceptions.h
+C:/OOP_Cpp/Lab4/parser_exceptions.h
 
-F:/OOP_Cpp/Lab4/parser_exceptions.h
-
-F:/OOP_Cpp/Lab4/tuple_print.cpp
-tuple_print.h
-F:/OOP_Cpp/Lab4/tuple_print.h
-
-F:/OOP_Cpp/Lab4/tuple_print.h
-iostream
--
-tuple
--
+C:/OOP_Cpp/Lab4/parser_exceptions.h
 

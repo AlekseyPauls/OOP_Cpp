@@ -4,10 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "F:/OOP_Cpp/Lab4/csvparser.cpp" "F:/OOP_Cpp/Lab4/cmake-build-debug/CMakeFiles/Lab4.dir/csvparser.cpp.obj"
-  "F:/OOP_Cpp/Lab4/main.cpp" "F:/OOP_Cpp/Lab4/cmake-build-debug/CMakeFiles/Lab4.dir/main.cpp.obj"
-  "F:/OOP_Cpp/Lab4/parser_exceptions.cpp" "F:/OOP_Cpp/Lab4/cmake-build-debug/CMakeFiles/Lab4.dir/parser_exceptions.cpp.obj"
-  "F:/OOP_Cpp/Lab4/tuple_print.cpp" "F:/OOP_Cpp/Lab4/cmake-build-debug/CMakeFiles/Lab4.dir/tuple_print.cpp.obj"
+  "C:/OOP_Cpp/Lab4/main.cpp" "C:/OOP_Cpp/Lab4/cmake-build-debug/CMakeFiles/Lab4.dir/main.cpp.obj"
+  "C:/OOP_Cpp/Lab4/parser_exceptions.cpp" "C:/OOP_Cpp/Lab4/cmake-build-debug/CMakeFiles/Lab4.dir/parser_exceptions.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
